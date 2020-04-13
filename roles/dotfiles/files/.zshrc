@@ -23,3 +23,4 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 source <(kubectl completion zsh)
+source ~/.aliases
