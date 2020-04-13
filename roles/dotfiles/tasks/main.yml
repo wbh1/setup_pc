@@ -1,0 +1,10 @@
+---
+  - name: Create symlinks for dotfiles
+    file:
+      src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
+      dest: "{{ item.dest }}"
+      state: link
+    loop:
+      - { src: ".zshrc", dest: "{{ ansible_facts.env.HOME }}/.zshrc" }
+      - { src: ".gitconfig", dest: "{{ ansible_facts.env.HOME }}/.gitconfig" }
+      - { src: ".aliases", dest: "{{ ansible_facts.env.HOME }}/.aliases" }

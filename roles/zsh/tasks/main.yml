@@ -1,0 +1,31 @@
+---
+- name: ZSH Installation
+  block:
+    - name: Install ZSH via Linux package manager
+      become: yes
+      package:
+        name: zsh
+        state: present
+      when: ansible_facts["system"] == "Linux"
+  rescue:
+    - name: Try again in case of python3-apt error
+      become: yes
+      command: apt install zsh
+      args:
+        creates: /usr/bin/zsh
+
+- name: Set ZSH as default shell
+  user:
+    shell: /usr/bin/zsh
+    name: "{{ ansible_facts.user_id }}"
+
+- name: Install oh-my-zsh
+  command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    creates: ~/.oh-my-zsh
+
+- name: Install Powerlevel10k theme
+  git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+

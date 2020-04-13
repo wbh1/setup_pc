@@ -1,0 +1,8 @@
+---
+  - name: Download Go
+    become: yes
+    unarchive:
+      src: https://dl.google.com/go/go{{GO_VERSION}}.linux-amd64.tar.gz
+      dest: /usr/local
+      remote_src: yes
+    when: ansible_system == "Linux"

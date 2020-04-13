@@ -1,0 +1,7 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Will Hegedus
+	email = wbhegedus@liberty.edu
+[url "ssh://git@bitbucket-integration.liberty.edu:7999/"]
+	insteadOf = https://bitbucket.os.liberty.edu/scm/
