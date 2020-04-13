@@ -8,3 +8,6 @@ This is an Ansible role intended to be run against a local machine in order to c
 ```bash
 ansible-playbook playbook.yml -K
 ```
+
+## Sources
+- [dircolors](https://github.com/seebi/dircolors-solarized)

@@ -8,3 +8,4 @@
       - { src: ".zshrc", dest: "{{ ansible_facts.env.HOME }}/.zshrc" }
       - { src: ".gitconfig", dest: "{{ ansible_facts.env.HOME }}/.gitconfig" }
       - { src: ".aliases", dest: "{{ ansible_facts.env.HOME }}/.aliases" }
+      - { src: ".dircolors", dest: "{{ ansible_facts.env.HOME }}/.dircolors" }

@@ -7,7 +7,7 @@ PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/go/bin:~/go/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/wbhegedus/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -15,6 +15,9 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status kubecontext)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+
+# Fix `ls` colors for Solarized Dark theme
+eval `dircolors $HOME/.dircolors`
 
 # Which plugins would you like to load?
 plugins=(git)
