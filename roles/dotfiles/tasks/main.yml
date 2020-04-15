@@ -6,6 +6,8 @@
       state: link
     loop:
       - { src: ".zshrc", dest: "{{ ansible_facts.env.HOME }}/.zshrc" }
+      - { src: ".p10k.zsh", dest: "{{ ansible_facts.env.HOME }}/.p10k.zsh" }
       - { src: ".gitconfig", dest: "{{ ansible_facts.env.HOME }}/.gitconfig" }
       - { src: ".aliases", dest: "{{ ansible_facts.env.HOME }}/.aliases" }
       - { src: ".dircolors", dest: "{{ ansible_facts.env.HOME }}/.dircolors" }
+      - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }

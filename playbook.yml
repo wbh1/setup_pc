@@ -4,7 +4,7 @@
     vars:
       GO_VERSION: 1.14.2
     roles:
+      - { name: dotfiles, tags: dotfiles }
       - zsh
-      - dotfiles
       - go
       - k8s
