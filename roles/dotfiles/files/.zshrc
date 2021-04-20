@@ -23,7 +23,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 eval `dircolors $HOME/.dircolors`
 
 # Which plugins would you like to load?
-plugins=(git)
+plugins=(git docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -34,3 +34,24 @@ source ~/.aliases
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH="$HOME/.poetry/bin:$PATH"
+export GOPRIVATE=*.liberty.edu
+
+# Source scripts in profile.d
+source /etc/profile.d/*.sh
+
+# Go Version Management
+[[ -s "/home/wbhegedus/.gvm/scripts/gvm" ]] && source "/home/wbhegedus/.gvm/scripts/gvm"
+
+# Python Version Management
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+
+# NodeJS Version Management
+export N_PREFIX=$HOME
+export PATH=$PATH:$HOME/bin
