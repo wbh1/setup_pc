@@ -5,6 +5,6 @@ alias kns=kubens
 # Set aliases while in WSL
 if ! [ -z "$WSL_DISTRO_NAME" ]
 then
-  alias approvals="pipenv run python /mnt/c/Users/wbhegedus/bitbucket/wbh/scripts/servicenow/approveCHGs.py"
-  alias movechg="pipenv run python /mnt/c/Users/wbhegedus/bitbucket/wbh/scripts/servicenow/moveCHG.py"
+  alias approvals="cd ~/bitbucket/wbh/scripts && pipenv run python ~/bitbucket/wbh/scripts/servicenow/approveCHGs.py"
+  alias movechg="cd ~/bitbucket/wbh/scripts && pipenv run python ~/bitbucket/wbh/scripts/servicenow/moveCHG.py"
 fi
