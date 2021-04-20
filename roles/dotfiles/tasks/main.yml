@@ -1,13 +1,23 @@
 ---
-  - name: Create symlinks for dotfiles
-    file:
-      src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
-      dest: "{{ item.dest }}"
-      state: link
-    loop:
-      - { src: ".zshrc", dest: "{{ ansible_facts.env.HOME }}/.zshrc" }
-      - { src: ".p10k.zsh", dest: "{{ ansible_facts.env.HOME }}/.p10k.zsh" }
-      - { src: ".gitconfig", dest: "{{ ansible_facts.env.HOME }}/.gitconfig" }
-      - { src: ".aliases", dest: "{{ ansible_facts.env.HOME }}/.aliases" }
-      - { src: ".dircolors", dest: "{{ ansible_facts.env.HOME }}/.dircolors" }
-      - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
+- name: Template files that need templating
+  become: yes
+  template:
+    src: "{{ item }}"
+    dest: /etc/profile.d/{{ item | basename | splitext | first}}
+  with_fileglob:
+    - templates/*.j2
+  loop_control:
+    label: /etc/profile.d/{{ item | basename | splitext | first}}
+
+- name: Create symlinks for dotfiles
+  file:
+    src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: ".zshrc", dest: "{{ ansible_facts.env.HOME }}/.zshrc" }
+    - { src: ".p10k.zsh", dest: "{{ ansible_facts.env.HOME }}/.p10k.zsh" }
+    - { src: ".gitconfig", dest: "{{ ansible_facts.env.HOME }}/.gitconfig" }
+    - { src: ".aliases", dest: "{{ ansible_facts.env.HOME }}/.aliases" }
+    - { src: ".dircolors", dest: "{{ ansible_facts.env.HOME }}/.dircolors" }
+    - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
