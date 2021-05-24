@@ -1,4 +1,11 @@
 ---
+- name: Verify creation of /etc/profile.d
+  become: yes
+  file:
+    path: /etc/profile.d
+    state: directory
+    mode: 0755
+
 - name: Template files that need templating
   become: yes
   template:

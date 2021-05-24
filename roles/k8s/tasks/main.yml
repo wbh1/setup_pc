@@ -1,32 +1,31 @@
 ---
   - name: install kubectl
     get_url:
-      url: https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl
+      url: https://storage.googleapis.com/kubernetes-release/release/{{k8s_version}}/bin/{{ansible_system | lower}}/amd64/kubectl
       dest: /usr/local/bin/kubectl
       mode: 0755
-    when: ansible_system == "Linux"
   
-  - name: does oc exist?
-    stat:
-      path: /usr/local/bin/oc
-    register: oc_binary
-    when: ansible_system == "Linux"
+  # - name: does oc exist?
+  #   stat:
+  #     path: /usr/local/bin/oc
+  #   register: oc_binary
+  #   when: ansible_system == "Linux"
 
-  - name: download oc
-    unarchive:
-      remote_src: yes
-      src: https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
-      dest: /tmp/oc_cli
-    when: ansible_system == "Linux" and not oc_binary.stat.exists
-    register: oc_downloaded
+  # - name: download oc
+  #   unarchive:
+  #     remote_src: yes
+  #     src: https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
+  #     dest: /tmp/oc_cli
+  #   when: ansible_system == "Linux" and not oc_binary.stat.exists
+  #   register: oc_downloaded
     
   
-  - name: move oc binary
-    copy:
-      remote_src: yes
-      src: /tmp/oc_cli/oc
-      dest: /usr/local/bin/oc
-    when: oc_downloaded.changed
+  # - name: move oc binary
+  #   copy:
+  #     remote_src: yes
+  #     src: /tmp/oc_cli/oc
+  #     dest: /usr/local/bin/oc
+  #   when: oc_downloaded.changed
 
   - name: install kubectx/kubens
     become: yes

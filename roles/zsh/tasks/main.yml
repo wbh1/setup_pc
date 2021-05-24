@@ -18,9 +18,10 @@
   user:
     shell: /usr/bin/zsh
     name: "{{ ansible_facts.user_id }}"
+  when: ansible_facts["system"] == "Linux"
 
 - name: Install oh-my-zsh
-  command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
 

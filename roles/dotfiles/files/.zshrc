@@ -10,6 +10,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+PATH=$PATH:/Users/whegedus/Library/Python/3.9/bin
 PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/go/bin:~/go/bin
 
@@ -20,7 +21,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Fix `ls` colors for Solarized Dark theme
-eval `dircolors $HOME/.dircolors`
+# eval `dircolors $HOME/.dircolors`
 
 # Which plugins would you like to load?
 plugins=(git docker)
@@ -29,7 +30,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 source <(kubectl completion zsh)
-source <(oc completion zsh)
 source ~/.aliases
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -39,7 +39,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export GOPRIVATE=*.liberty.edu
 
 # Source scripts in profile.d
-source /etc/profile.d/*.sh
+# source /etc/profile.d/*.sh
 
 # Go Version Management
 [[ -s "/home/wbhegedus/.gvm/scripts/gvm" ]] && source "/home/wbhegedus/.gvm/scripts/gvm"

@@ -1,5 +1,5 @@
 ---
-  - name: Download Go
+  - name: Download Go (Linux)
     become: yes
     unarchive:
       src: https://dl.google.com/go/go{{GO_VERSION}}.linux-amd64.tar.gz
@@ -7,3 +7,9 @@
       remote_src: yes
       creates: /usr/local/go
     when: ansible_system == "Linux"
+
+  - name: Download Go (Mac)
+    homebrew:
+      name: go@{{GO_VERSION}}
+      state: present
+    when: ansible_system == "Darwin"

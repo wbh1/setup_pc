@@ -2,7 +2,8 @@
   - hosts: localhost
     connection: local
     vars:
-      GO_VERSION: 1.14.2
+      GO_VERSION: 1.16
+      k8s_version: v1.18.0
     roles:
       - { name: dotfiles, tags: dotfiles }
       - zsh
