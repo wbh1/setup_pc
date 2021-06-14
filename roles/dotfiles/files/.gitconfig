@@ -2,6 +2,6 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = Will Hegedus
-	email = wbhegedus@liberty.edu
-[url "ssh://git@bitbucket-integration.liberty.edu:7999/"]
-	insteadOf = https://bitbucket.os.liberty.edu/scm/
+	email = whegedus@linode.com
+[pull]
+	rebase = false

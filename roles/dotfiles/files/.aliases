@@ -1,6 +1,15 @@
+# K8s
 alias k=kubectl
 alias kctx=kubectx
 alias kns=kubens
+
+# Linode
+alias lin=linode-cli
+
+# Copy SSH key to clipboard (MacOS)
+alias cpssh="pbcopy < ~/.ssh/id_rsa.pub"
+
+alias tmux="tmux -CC"
 
 # Set aliases while in WSL
 if ! [ -z "$WSL_DISTRO_NAME" ]

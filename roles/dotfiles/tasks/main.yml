@@ -28,3 +28,4 @@
     - { src: ".aliases", dest: "{{ ansible_facts.env.HOME }}/.aliases" }
     - { src: ".dircolors", dest: "{{ ansible_facts.env.HOME }}/.dircolors" }
     - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
+    - { src: ".tmux.conf", dest: "{{ ansible_facts.env.HOME}}/.tmux.conf" }
