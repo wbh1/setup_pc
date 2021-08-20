@@ -24,7 +24,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # eval `dircolors $HOME/.dircolors`
 
 # Which plugins would you like to load?
-plugins=(git docker)
+plugins=(git asdf docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,3 +58,5 @@ export PATH=$PATH:$HOME/bin
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+eval "$(direnv hook zsh)"
