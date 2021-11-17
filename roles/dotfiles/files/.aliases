@@ -9,6 +9,10 @@ alias lin=linode-cli
 # Copy SSH key to clipboard (MacOS)
 alias cpssh="pbcopy < ~/.ssh/id_rsa.pub"
 
+# Todoist
+alias td="todoist"
+alias today="td l -f '(today | overdue)'"
+
 # Set aliases while in WSL
 if ! [ -z "$WSL_DISTRO_NAME" ]
 then
