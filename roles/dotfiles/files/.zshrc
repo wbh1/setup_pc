@@ -11,7 +11,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 PATH=$PATH:/Users/whegedus/Library/Python/3.9/bin
-PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/local/bin:/usr/local/sbin
 export PATH=$PATH:/usr/local/go/bin:~/go/bin
 
 # Path to your oh-my-zsh installation.
@@ -60,3 +60,5 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 eval "$(direnv hook zsh)"
+
+export EDITOR=vim
