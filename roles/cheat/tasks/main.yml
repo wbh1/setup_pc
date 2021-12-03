@@ -1,0 +1,17 @@
+---
+  - name: install cheat
+    command: go get -u github.com/cheat/cheat/cmd/cheat
+    args:
+      creates: "{{ ansible_facts.env.HOME }}/go/bin/cheat"
+  
+  - name: Create dir for cheat sheets
+    file:
+      path: "{{ ansible_facts.env.HOME }}/.config/cheat/cheetsheets/community"
+      state: directory
+      mode: 0755
+  
+  - name: download community cheat sheets
+    git:
+      repo: git@github.com:cheat/cheatsheets.git
+      dest: "{{ ansible_facts.env.HOME }}/.config/cheat/cheetsheets/community"
+   

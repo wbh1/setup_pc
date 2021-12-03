@@ -1,10 +1,12 @@
 ---
-- name: Verify creation of /etc/profile.d
-  become: yes
+- name: Verify creation of directories
   file:
-    path: /etc/profile.d
+    path: "{{ item }}"
     state: directory
     mode: 0755
+  loop:
+    - /etc/profile.d
+    - "{{ ansible_facts.env.HOME }}/.config/cheat"
 
 - name: Template files that need templating
   become: yes
@@ -29,3 +31,4 @@
     - { src: ".dircolors", dest: "{{ ansible_facts.env.HOME }}/.dircolors" }
     - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
     - { src: ".tmux.conf", dest: "{{ ansible_facts.env.HOME}}/.tmux.conf" }
+    - { src: "cheatconf.yml", dest: "{{ ansible_facts.env.HOME }}/.config/cheat/conf.yml"}
