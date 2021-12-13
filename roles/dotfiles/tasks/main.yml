@@ -25,6 +25,8 @@
     state: link
   loop:
     - { src: ".zshrc", dest: "{{ ansible_facts.env.HOME }}/.zshrc" }
+    - { src: ".spacecowboy.sh", dest: "{{ ansible_facts.env.HOME }}/.spacecowboy.sh" }
+    - { src: ".zlogout", dest: "{{ ansible_facts.env.HOME }}/.zlogout" }
     - { src: ".p10k.zsh", dest: "{{ ansible_facts.env.HOME }}/.p10k.zsh" }
     - { src: ".gitconfig", dest: "{{ ansible_facts.env.HOME }}/.gitconfig" }
     - { src: ".aliases", dest: "{{ ansible_facts.env.HOME }}/.aliases" }
