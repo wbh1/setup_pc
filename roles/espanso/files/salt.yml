@@ -1,0 +1,14 @@
+name: salt
+parent: default
+
+matches:
+  # Salt
+  - trigger: ":scache"
+    replace: 'sudo salt-call saltutil.clear_cache; sudo salt-call saltutil.refresh_grains;'
+
+  - trigger: ":highstate"
+    replace: "sudo salt-call state.highstate --state-output=changes"
+
+  - trigger: ":tshighstate"
+    replace: cat /var/lib/prometheus/node-exporter/saltHighState.prom | tail -1 | awk '{split($2,a,"."); print a[1];}' | xargs -I % sh -c 'date -d @%'
+

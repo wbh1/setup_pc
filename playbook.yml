@@ -2,7 +2,7 @@
   - hosts: localhost
     connection: local
     vars:
-      GO_VERSION: 1.16
+      GO_VERSION: 1.17.6
       k8s_version: v1.18.0
     roles:
       - { name: dotfiles, tags: dotfiles }
@@ -10,3 +10,4 @@
       - go
       - k8s
       - cheat
+      - { name: espanso, tags: espanso }

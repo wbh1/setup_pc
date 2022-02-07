@@ -1,0 +1,26 @@
+---
+- name: Install espanso repo tap (Mac)
+  homebrew_tap:
+    name: federico-terzi/espanso
+    state: present
+  when: ansible_os_family == "Darwin"
+
+- name: Install espanso from Homebrew (Mac)
+  homebrew:
+    name: espanso
+    state: latest
+  when: ansible_os_family == "Darwin"
+
+- name: Update default espanso configuration
+  copy:
+    src: "default.yml"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Preferences/espanso/default.yml" 
+
+- name: Move espanso configuration files into place
+  file:
+    src: "{{ playbook_dir }}/roles/espanso/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: "link" 
+  when: ansible_os_family == "Darwin"
+  loop:
+    - {src: "salt.yml", dest: "{{ ansible_facts.env.HOME }}/Library/Preferences/espanso/user/salt.yml"}
