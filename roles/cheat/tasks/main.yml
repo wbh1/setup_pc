@@ -14,4 +14,13 @@
     git:
       repo: git@github.com:cheat/cheatsheets.git
       dest: "{{ ansible_facts.env.HOME }}/.config/cheat/cheetsheets/community"
-   
+  
+  - name: setup custom Cheat configs
+    file:
+      src: "{{ playbook_dir }}/roles/cheat/files/{{ item.src }}"
+      dest: "{{ item.dest }}"
+      state: link
+      force: yes
+    loop:
+      - { src: "cheatconf.yml", dest: "{{ ansible_facts.env.HOME }}/.config/cheat/conf.yml"}
+ 

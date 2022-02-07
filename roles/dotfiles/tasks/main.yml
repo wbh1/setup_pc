@@ -33,4 +33,3 @@
     - { src: ".dircolors", dest: "{{ ansible_facts.env.HOME }}/.dircolors" }
     - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
     - { src: ".tmux.conf", dest: "{{ ansible_facts.env.HOME}}/.tmux.conf" }
-    - { src: "cheatconf.yml", dest: "{{ ansible_facts.env.HOME }}/.config/cheat/conf.yml"}
