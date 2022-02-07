@@ -10,6 +10,6 @@
 
   - name: Download Go (Mac)
     homebrew:
-      name: go@{{GO_VERSION}}
-      state: present
+      name: go
+      state: latest
     when: ansible_system == "Darwin"
