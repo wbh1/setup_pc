@@ -62,3 +62,4 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 eval "$(direnv hook zsh)"
 
 export EDITOR=vim
+eval "$(rbenv init - zsh)"
