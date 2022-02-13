@@ -43,3 +43,9 @@
         loop:
           - kubectx
           - kubens
+
+  - name: install flux
+    homebrew:
+      name: fluxcd/tap/flux
+      state: latest
+    when: ansible_os_family == "Darwin"

@@ -8,6 +8,6 @@
       - { name: dotfiles, tags: dotfiles }
       - zsh
       - go
-      - k8s
+      - { name: k8s, tags: k8s }
       - cheat
       - { name: espanso, tags: espanso }
