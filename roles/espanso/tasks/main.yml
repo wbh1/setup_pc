@@ -18,9 +18,8 @@
 
 - name: Move espanso configuration files into place
   file:
-    src: "{{ playbook_dir }}/roles/espanso/files/{{ item.src }}"
-    dest: "{{ item.dest }}"
+    src: "{{ item }}"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Preferences/espanso/user/{{ item | basename }}"
     state: "link" 
   when: ansible_os_family == "Darwin"
-  loop:
-    - {src: "salt.yml", dest: "{{ ansible_facts.env.HOME }}/Library/Preferences/espanso/user/salt.yml"}
+  with_fileglob: "{{ playbook_dir }}/roles/espanso/files/[!default]*.yml" 
