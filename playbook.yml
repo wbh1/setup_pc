@@ -3,7 +3,6 @@
     connection: local
     vars:
       GO_VERSION: 1.17.6
-      k8s_version: v1.18.0
     roles:
       - { name: dotfiles, tags: dotfiles }
       - zsh

@@ -4,7 +4,7 @@ parent: default
 matches:
   # Salt
   - trigger: ":scache"
-    replace: 'sudo salt-call saltutil.clear_cache; sudo salt-call saltutil.refresh_grains;'
+    replace: 'sudo salt-call --local saltutil.clear_cache; sudo salt-call saltutil.refresh_grains;'
 
   - trigger: ":highstate"
     replace: "sudo salt-call state.highstate --state-output=changes"
