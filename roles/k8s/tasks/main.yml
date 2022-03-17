@@ -8,3 +8,4 @@
       - kubectx
       - fluxcd/tap/flux
       - helm
+      - kustomize
