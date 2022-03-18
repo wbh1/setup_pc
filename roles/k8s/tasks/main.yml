@@ -1,5 +1,5 @@
 ---
-  - name: install tools
+  - name: install tools from homebrew
     homebrew:
       name: "{{ item }}"
     when: ansible_os_family == "Darwin"
@@ -9,3 +9,13 @@
       - fluxcd/tap/flux
       - helm
       - kustomize
+
+  - name: install cmctl
+    unarchive:
+      src: https://github.com/cert-manager/cert-manager/releases/download/v1.7.1/cmctl-darwin-amd64.tar.gz
+      dest: /usr/local/bin
+      creates: /usr/local/bin/cmctl
+      remote_src: yes
+      exclude:
+        - LICENSES
+    when: ansible_os_family == "Darwin"
