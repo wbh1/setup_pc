@@ -1,12 +1,23 @@
 ---
-  - hosts: localhost
-    connection: local
-    vars:
-      GO_VERSION: 1.17.6
-    roles:
-      - { name: dotfiles, tags: dotfiles }
-      - zsh
-      - go
-      - { name: k8s, tags: k8s }
-      - cheat
-      - { name: espanso, tags: espanso }
+- hosts: localhost
+  connection: local
+  vars:
+    GO_VERSION: 1.17.6
+  roles:
+    - name: dotfiles
+      tags: dotfiles
+
+    - name: zsh
+      tags: zsh
+    
+    - name: go
+      tags: go
+    
+    - name: k8s
+      tags: k8s
+    
+    - name: cheat
+      tags: cheat
+    
+    - name: espanso
+      tags: espanso
