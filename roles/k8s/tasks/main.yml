@@ -9,6 +9,8 @@
       - fluxcd/tap/flux
       - helm
       - kustomize
+      - age # used with sops
+      - sops
 
   - name: install cmctl
     unarchive:
