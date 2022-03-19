@@ -30,6 +30,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 source <(kubectl completion zsh)
+source <(helm completion zsh)
 source ~/.aliases
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
