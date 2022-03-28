@@ -7,7 +7,7 @@ alias kns=kubens
 alias lin=linode-cli
 
 # Git
-alias gsync="gcm; glum; gp"
+alias gsync="gcm && glum && gp"
 
 # Copy SSH key to clipboard (MacOS)
 alias cpssh="pbcopy < ~/.ssh/id_rsa.pub"
