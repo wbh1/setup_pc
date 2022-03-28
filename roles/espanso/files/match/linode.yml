@@ -1,0 +1,6 @@
+name: linode 
+parent: default
+
+matches:
+  - regex: ":j(?P<jira>[A-Z]{3}-\\d+)"
+    replace: "https://jira.linode.com/browse/{{jira}}"

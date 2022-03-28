@@ -1,25 +1,31 @@
 ---
-- name: Install espanso repo tap (Mac)
-  homebrew_tap:
-    name: federico-terzi/espanso
-    state: present
-  when: ansible_os_family == "Darwin"
+- name: Load a variable file based on the OS type, or a default if not found. Using free-form to specify the file.
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ansible_distribution}}.yml"
+        - "{{ansible_os_family}}.yml"
+        - default.yml
+      paths:
+        - "vars"
 
-- name: Install espanso from Homebrew (Mac)
-  homebrew:
-    name: espanso
-    state: latest
-  when: ansible_os_family == "Darwin"
+- name: Install Espanso from Github
+  unarchive:
+    remote_src: true
+    src: https://github.com/federico-terzi/espanso/releases/download/{{ espanso_version }}/Espanso-Mac-Intel.zip
+    dest: "{{ espanso_install_dir }}"
+    creates: "{{ espanso_install_dir }}/espanso"
 
 - name: Update default espanso configuration
   copy:
-    src: "default.yml"
-    dest: "{{ ansible_facts.env.HOME }}/Library/Preferences/espanso/default.yml" 
+    src: "config/default.yml"
+    dest: "{{ espanso_config_dir }}/config/default.yml"
 
 - name: Move espanso configuration files into place
   file:
     src: "{{ item }}"
-    dest: "{{ ansible_facts.env.HOME }}/Library/Preferences/espanso/user/{{ item | basename }}"
-    state: "link" 
-  when: ansible_os_family == "Darwin"
-  with_fileglob: "{{ playbook_dir }}/roles/espanso/files/[!default]*.yml" 
+    dest: "{{ espanso_config_dir }}/match/{{ item | basename }}"
+    state: "link"
+    force: true
+  with_fileglob: "{{ playbook_dir }}/roles/espanso/files/match/*.yml"
