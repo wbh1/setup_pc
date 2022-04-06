@@ -4,6 +4,7 @@
 matches:
   - trigger: ":espanso"
     replace: Hi there!
+
   - trigger: ":date"
     replace: "{{mydate}}"
     vars:
@@ -11,6 +12,7 @@ matches:
         type: date
         params:
           format: "%Y_%m_%d"
+
   - trigger: ":pubkey"
     replace: "{{key}}"
     vars:
@@ -18,6 +20,7 @@ matches:
         type: shell
         params:
           cmd: cat ~/.ssh/id_rsa.pub
+
   - trigger: ":shell"
     replace: "{{output}}"
     vars:
@@ -25,7 +28,9 @@ matches:
         type: shell
         params:
           cmd: echo Hello from your shell
+
   - trigger: ":hss"
-    replace: "tmuxer -c \"hss {}\""
+    replace: 'tmuxer -c "hss {}"'
+
   - trigger: ":du"
     replace: du -shx --exclude /proc --exclude /vbin /* | sort -rh
