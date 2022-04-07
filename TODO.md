@@ -1,0 +1,3 @@
+- [ ] Manage cheatsheets via this repo
+- [ ] Add ansible-lint
+- [ ] Update README

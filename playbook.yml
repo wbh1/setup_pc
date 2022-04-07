@@ -21,3 +21,6 @@
     
     - name: espanso
       tags: espanso
+    
+    - name: 1password
+      tags: 1password

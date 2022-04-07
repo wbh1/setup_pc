@@ -1,0 +1,5 @@
+---
+- name: install 1Password CLI
+  homebrew_cask:
+    name: 1password/tap/1password-cli
+  when: ansible_os_family == "Darwin"
