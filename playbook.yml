@@ -24,3 +24,7 @@
     
     - name: 1password
       tags: 1password
+    
+    - name: alfred
+      tags: alfred
+      when: ansible_os_family == "Darwin"

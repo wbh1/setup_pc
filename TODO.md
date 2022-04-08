@@ -1,3 +1,6 @@
 - [ ] Manage cheatsheets via this repo
 - [ ] Add ansible-lint
 - [ ] Update README
+- [ ] Add things installed via Homebrew that aren't in this repo
+- [ ] Track Git repos I download 
+  - [ ] Track vs-code workspaces
