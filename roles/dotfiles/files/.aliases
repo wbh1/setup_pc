@@ -1,3 +1,6 @@
+# Self
+alias pcsetup="ansible-playbook /Users/whegedus/github/wbh1/setup_pc/playbook.yml"
+
 # K8s
 alias k=kubectl
 alias kctx=kubectx
