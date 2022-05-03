@@ -1,0 +1,5 @@
+---
+- name: install pgadmin4
+  homebrew:
+    name: pgadmin4
+    state: installed
