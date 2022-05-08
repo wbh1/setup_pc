@@ -29,6 +29,6 @@
       tags: alfred
       when: ansible_os_family == "Darwin"
     
-    - name: pgadmin
-      tags: pgadmin
-      when: ansible_os_family == "Darwin"
+    # Install assorted packages
+    - name: pkgs
+      tags: pkgs

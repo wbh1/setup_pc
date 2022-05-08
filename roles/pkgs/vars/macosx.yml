@@ -1,0 +1,6 @@
+pkgs:
+  - gnu-sed
+  - curl
+  - direnv
+  - bash
+  - pgadmin4
