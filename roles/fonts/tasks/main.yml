@@ -1,0 +1,24 @@
+---
+- name: Make font family directory for DejaVuSansMono
+  become: yes
+  file:
+    path: /usr/share/fonts/DejaVuSansMono
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Download Deja Vu Sans NF
+  become: yes
+  ansible.builtin.get_url:
+    url: https://github.com/powerline/fonts/raw/master/DejaVuSansMono/{{ item|urlencode }}
+    dest: /usr/share/fonts/DejaVuSansMono/
+    mode: 0644
+    owner: root
+    group: root
+  loop:
+    - DejaVu Sans Mono for Powerline.ttf
+    - DejaVu Sans Mono Oblique for Powerline.ttf
+    - DejaVu Sans Mono Bold for Powerline.ttf
+    - DejaVu Sans Mono Bold Oblique for Powerline.ttf
+  notify: reload font-cache

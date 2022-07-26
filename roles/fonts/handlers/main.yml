@@ -1,0 +1,5 @@
+---
+- name: reload font-cache
+  become: true
+  shell: fc-cache -v
+  listen: "reload font-cache"

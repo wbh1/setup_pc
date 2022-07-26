@@ -10,18 +10,19 @@
   rescue:
     - name: Try again in case of python3-apt error
       become: yes
-      command: apt install zsh
-      args:
-        creates: /usr/bin/zsh
+      ansible.builtin.package:
+        name: zsh
+        state: present
 
 - name: Set ZSH as default shell
+  become: true
   user:
     shell: /usr/bin/zsh
     name: "{{ ansible_facts.user_id }}"
   when: ansible_facts["system"] == "Linux"
 
 - name: Install oh-my-zsh
-  command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
 

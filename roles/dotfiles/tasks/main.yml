@@ -8,21 +8,12 @@
     - /etc/profile.d
     - "{{ ansible_facts.env.HOME }}/.config/cheat"
 
-- name: Template files that need templating
-  become: yes
-  template:
-    src: "{{ item }}"
-    dest: /etc/profile.d/{{ item | basename | splitext | first}}
-  with_fileglob:
-    - templates/*.j2
-  loop_control:
-    label: /etc/profile.d/{{ item | basename | splitext | first}}
-
 - name: Create symlinks for dotfiles
   file:
     src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
+    force: true
   loop:
     - { src: ".zshrc", dest: "{{ ansible_facts.env.HOME }}/.zshrc" }
     - { src: ".spacecowboy.sh", dest: "{{ ansible_facts.env.HOME }}/.spacecowboy.sh" }

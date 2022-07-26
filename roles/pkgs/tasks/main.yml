@@ -5,6 +5,7 @@
       files:
         - '{{ ansible_distribution | lower }}.yml'
         - '{{ ansible_os_family | lower }}.yml'
+        - 'default.yml'
       paths:
         - 'vars'
 
@@ -12,4 +13,11 @@
   homebrew:
     name: "{{ pkgs }}"
     state: present
-  when: ansible_os_family == "Darwin"
+  when: pkgs is defined and pkgs|length > 0 and ansible_os_family == "Darwin"
+
+- name: Install Linux packages
+  become: yes
+  package:
+    name: "{{ pkgs }}"
+    state: latest
+  when: pkgs is defined and pkgs|length > 0 and ansible_system == "Linux"

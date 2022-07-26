@@ -1,6 +1,6 @@
 ---
   - name: install cheat
-    command: go get -u github.com/cheat/cheat/cmd/cheat
+    command: /usr/local/go/bin/go install github.com/cheat/cheat/cmd/cheat@latest
     args:
       creates: "{{ ansible_facts.env.HOME }}/go/bin/cheat"
   

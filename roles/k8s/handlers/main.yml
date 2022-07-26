@@ -1,0 +1,19 @@
+---
+- name: move helm
+  become: true
+  ansible.builtin.copy:
+    remote_src: true
+    src: /usr/local/bin/linux-amd64/helm
+    dest: /usr/local/bin/helm
+    mode: 0755
+    owner: root
+    group: root
+  listen: "helm cleanup"
+
+- name: delete directory from helm download
+  become: true
+  file:
+    path: /usr/local/bin/linux-amd64
+    state: absent
+    force: true
+  listen: "helm cleanup"

@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   vars:
-    GO_VERSION: 1.17.6
+    GO_VERSION: 1.18.4
   roles:
     - name: dotfiles
       tags: dotfiles
@@ -21,6 +21,7 @@
     
     - name: espanso
       tags: espanso
+      when: ansible_os_family == "Darwin"
     
     - name: 1password
       tags: 1password
@@ -32,3 +33,10 @@
     # Install assorted packages
     - name: pkgs
       tags: pkgs
+
+    - name: vscode
+      tags: vscode
+    
+    - name: fonts
+      tags: fonts
+      when: ansible_system == "Linux"
