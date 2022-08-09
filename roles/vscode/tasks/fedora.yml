@@ -6,6 +6,7 @@
     name: code
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     baseurl: https://packages.microsoft.com/yumrepos/vscode
+    includepkgs: code
     gpgcheck: true
     file: vscode
 
