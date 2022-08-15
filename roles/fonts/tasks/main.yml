@@ -22,3 +22,23 @@
     - DejaVu Sans Mono Bold for Powerline.ttf
     - DejaVu Sans Mono Bold Oblique for Powerline.ttf
   notify: reload font-cache
+
+- name: Make directory for FiraCode
+  become: yes
+  file:
+    path: /usr/share/fonts/FiraCodeNF
+    state: directory
+    mode: 0755
+    owner: root
+    group: root  
+
+- name: Download FiraCode
+  become: true
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+    dest: /usr/share/fonts/FiraCodeNF
+    mode: 0644
+    owner: root
+    group: root
+  notify: reload font-cache
