@@ -4,11 +4,11 @@
   vars:
     GO_VERSION: 1.18.4
   roles:
-    - name: dotfiles
-      tags: dotfiles
-
     - name: zsh
       tags: zsh
+
+    - name: dotfiles
+      tags: dotfiles
 
     - name: go
       tags: go
@@ -23,19 +23,9 @@
       tags: espanso
       when: ansible_os_family == "Darwin"
 
-    - name: 1password
-      tags: 1password
-
-    - name: alfred
-      tags: alfred
-      when: ansible_os_family == "Darwin"
-
     # Install assorted packages
     - name: pkgs
       tags: pkgs
-
-    - name: vscode
-      tags: vscode
 
     - name: fonts
       tags: fonts

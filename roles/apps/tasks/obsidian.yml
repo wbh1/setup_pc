@@ -1,0 +1,14 @@
+---
+- name: install obsidian in Fedora
+  become: true
+  block:
+    - name: add flatpak remote for flathub
+      community.general.flatpak_remote:
+        name: flathub
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    
+    - name: install Obsidian flatpak
+      community.general.flatpak:
+        name: md.obsidian.Obsidian
+        remote: flathub
+  when: ansible_distribution == "Fedora"

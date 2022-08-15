@@ -1,0 +1,15 @@
+---
+
+- name: install vscode for Fedora
+  ansible.builtin.include_tasks: vscode.yml
+  when: ansible_distribution == "Fedora"
+
+- name: install 1password
+  ansible.builtin.include_tasks: 1password.yml
+
+- name: install obsidian
+  ansible.builtin.include_tasks: obsidian.yml
+
+- name: install alfred
+  ansible.builtin.include_tasks: alfred.yml
+  when: ansible_os_family == "Darwin"
