@@ -1,0 +1,3 @@
+---
+- name: enable pop-shell
+  ansible.builtin.command: gnome-extensions enable pop-shell@system76.com

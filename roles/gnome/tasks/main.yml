@@ -1,0 +1,10 @@
+---
+- name: install pop-os shell in Fedora
+  become: true
+  ansible.builtin.yum:
+    name:
+      - gnome-shell-extension-pop-shell
+      - xprop
+    state: latest
+  when: ansible_distribution == "Fedora"
+  notify: enable pop-shell

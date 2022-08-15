@@ -9,34 +9,38 @@
 
     - name: zsh
       tags: zsh
-    
+
     - name: go
       tags: go
-    
+
     - name: k8s
       tags: k8s
-    
+
     - name: cheat
       tags: cheat
-    
+
     - name: espanso
       tags: espanso
       when: ansible_os_family == "Darwin"
-    
+
     - name: 1password
       tags: 1password
-    
+
     - name: alfred
       tags: alfred
       when: ansible_os_family == "Darwin"
-    
+
     # Install assorted packages
     - name: pkgs
       tags: pkgs
 
     - name: vscode
       tags: vscode
-    
+
     - name: fonts
       tags: fonts
       when: ansible_system == "Linux"
+
+    - name: gnome
+      tags: gnome
+      when: ansible_env["DESKTOP_SESSION"] is defined and ansible_env["DESKTOP_SESSION"] == "gnome"
