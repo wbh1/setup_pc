@@ -41,4 +41,6 @@
     mode: 0644
     owner: root
     group: root
-  notify: reload font-cache
+  notify:
+    - reload font-cache
+    - set gnome fonts

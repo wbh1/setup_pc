@@ -3,3 +3,6 @@
   become: true
   shell: fc-cache -v
   listen: "reload font-cache"
+
+- name: set gnome fonts
+  ansible.builtin.command: gsettings set org.gnome.desktop.interface monospace-font-name 'FiraCode Nerd Font 10'
