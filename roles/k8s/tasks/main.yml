@@ -71,5 +71,7 @@
         - linux-amd64/helm
       dest: /usr/local/bin
       creates: /usr/local/bin/helm
+      extra_opts:
+        - --strip-components=1
     notify: helm cleanup
     when: ansible_system == "Linux"
