@@ -1,8 +1,7 @@
 ---
 
-- name: install vscode for Fedora
+- name: install vscode
   ansible.builtin.include_tasks: vscode.yml
-  when: ansible_distribution == "Fedora"
 
 - name: install 1password
   ansible.builtin.include_tasks: 1password.yml

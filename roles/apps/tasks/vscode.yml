@@ -1,19 +1,30 @@
 
 ---
-- name: Add VSCode Yum Repository
-  become: true
-  ansible.builtin.yum_repository:
-    description: Visual Studio Code
-    name: code
-    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-    baseurl: https://packages.microsoft.com/yumrepos/vscode
-    includepkgs: code
-    gpgcheck: true
-    file: vscode
+- name: Install VSCode in Fedora
+  block:
+  - name: Add VSCode Yum Repository
+    become: true
+    ansible.builtin.yum_repository:
+      description: Visual Studio Code
+      name: code
+      gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      baseurl: https://packages.microsoft.com/yumrepos/vscode
+      includepkgs: code
+      gpgcheck: true
+      file: vscode
 
-- name: Install VSCode package
+  - name: Install VSCode package
+    become: true
+    ansible.builtin.yum:
+      name: code
+      state: latest
+      update_cache: true
+  when: ansible_distribution == "Fedora"
+
+- name: install vscode via snap
   become: true
-  ansible.builtin.yum:
-    name: code
-    state: latest
-    update_cache: true
+  ansible.builtin.snap:
+    name:
+      - code
+    classic: true
+  when: ansible_distribution == "Ubuntu"
