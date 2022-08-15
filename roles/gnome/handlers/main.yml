@@ -1,3 +1,9 @@
 ---
 - name: enable pop-shell
   ansible.builtin.command: gnome-extensions enable pop-shell@system76.com
+
+- name: set nord theme
+  ansible.builtin.shell:
+    cmd: |
+      gsettings set org.gnome.desktop.interface gtk-theme "Nordic" && \
+      gsettings set org.gnome.desktop.wm.preferences theme "Nordic"

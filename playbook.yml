@@ -33,4 +33,4 @@
 
     - name: gnome
       tags: gnome
-      when: ansible_env["DESKTOP_SESSION"] is defined and ansible_env["DESKTOP_SESSION"] == "gnome"
+      when: ansible_env["GNOME_SHELL_SESSION_MODE"] is defined

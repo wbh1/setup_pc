@@ -8,3 +8,18 @@
     state: latest
   when: ansible_distribution == "Fedora"
   notify: enable pop-shell
+
+- name: install gnome-tweaks
+  become: true
+  ansible.builtin.package:
+    name: gnome-tweaks
+    state: present
+  when: ansible_system == "Linux"
+
+- name: install nord theme
+  become: true
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: https://github.com/EliverLara/Nordic/releases/latest/download/Nordic.tar.xz
+    dest: /usr/share/themes
+  notify: set nord theme
