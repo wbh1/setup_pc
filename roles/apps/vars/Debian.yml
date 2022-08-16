@@ -1,0 +1,10 @@
+---
+alacritty_deps:
+  - cmake
+  - pkg-config
+  - libfreetype6-dev
+  - libfontconfig1-dev
+  - libxcb-xfixes0-dev
+  - libxkbcommon-dev
+  - libegl1-mesa-dev # for nvidia gpu on wayland
+  - python3

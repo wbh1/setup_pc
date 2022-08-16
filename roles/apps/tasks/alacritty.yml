@@ -1,0 +1,25 @@
+---
+- name: Install dependencies
+  become: true
+  ansible.builtin.apt:
+    name: "{{ alacritty_deps }}"
+    state: present
+
+- name: Create dir for alacritty code
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
+    state: directory
+    mode: 0755
+
+- name: Clone alacritty repo
+  git:
+    repo: https://github.com/alacritty/alacritty.git
+    dest: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
+    depth: 1
+  
+- name: Build alacritty
+  ansible.builtin.shell: 
+    cmd: "{{ ansible_facts.env.HOME }}/.cargo/bin/cargo build --release"
+    chdir: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
+    creates: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty/target/release/alacritty"
+  notify: alacritty postinstall

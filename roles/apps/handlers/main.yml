@@ -1,0 +1,11 @@
+---
+- name: alacrity postinstall
+  become: true
+  ansible.builtin.shell:
+    cmd: |
+      cp target/release/alacritty /usr/local/bin && \
+      cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg && \
+      desktop-file-install extra/linux/Alacritty.desktop && \
+      update-desktop-database && \
+      gsettings set org.gnome.desktop.default-applications.terminal exec alacritty
+    chdir: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"

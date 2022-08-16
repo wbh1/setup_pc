@@ -10,8 +10,8 @@
     - name: dotfiles
       tags: dotfiles
 
-    - name: go
-      tags: go
+    - name: programming
+      tags: programming
 
     - name: k8s
       tags: k8s
@@ -26,6 +26,9 @@
     # Install assorted packages
     - name: pkgs
       tags: pkgs
+    
+    - name: apps
+      tags: apps
 
     - name: fonts
       tags: fonts

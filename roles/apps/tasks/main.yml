@@ -1,4 +1,14 @@
 ---
+- name: read vars from first file found, use 'vars/' relative subdir
+  ansible.builtin.include_vars: "{{lookup('ansible.builtin.first_found', params)}}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+        - default.yml
+      paths:
+        - 'vars'
 
 - name: install vscode
   ansible.builtin.include_tasks: vscode.yml
@@ -12,3 +22,13 @@
 - name: install alfred
   ansible.builtin.include_tasks: alfred.yml
   when: ansible_os_family == "Darwin"
+
+- name: install Slack
+  ansible.builtin.include_tasks: slack.yml
+
+- name: install Alacritty
+  ansible.builtin.include_tasks: alacritty.yml
+  when: ansible_os_family == "Debian"
+
+- name: install tmuxer
+  ansible.builtin.include_tasks: tmuxer.yml

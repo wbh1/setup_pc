@@ -14,6 +14,9 @@ PATH=$PATH:/Users/whegedus/Library/Python/3.9/bin
 PATH=$PATH:/usr/local/bin:/usr/local/sbin
 export PATH=$PATH:/usr/local/go/bin:~/go/bin
 
+# Rust
+source "$HOME/.cargo/env"
+
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
