@@ -9,7 +9,7 @@
  */
 
 configuration {
-	font:							"FiraCode Nerd Font Mono 14";
+	font:							"JetBrainsMono Nerd Font Medium 14";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"Applications";
@@ -43,9 +43,9 @@ prompt {
     enabled: 						true;
 	padding: 						1% 0.75% 1% 0.75%;
 	background-color: 				@ac;
-	text-color: 					@fg;
+	text-color: 					@bg;
     border-radius:                  10px;
-	font:							"FiraCode Nerd Font Mono, Medium 14";
+	font:							"JetBrainsMono Nerd Font Medium 14";
 }
 
 textbox-prompt-colon {
