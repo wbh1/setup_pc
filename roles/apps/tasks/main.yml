@@ -10,25 +10,22 @@
       paths:
         - 'vars'
 
-- name: install vscode
-  ansible.builtin.include_tasks: vscode.yml
-
-- name: install 1password
-  ansible.builtin.include_tasks: 1password.yml
-
-- name: install obsidian
-  ansible.builtin.include_tasks: obsidian.yml
+- name: install {{ item }} 
+  ansible.builtin.include_tasks:
+    file: "{{ item }}.yml"
+  loop:
+    - vscode
+    - 1password
+    - obsidian
+    - slack
+    - tmuxer
+    - spotify
+    - todoist
 
 - name: install alfred
   ansible.builtin.include_tasks: alfred.yml
   when: ansible_os_family == "Darwin"
 
-- name: install Slack
-  ansible.builtin.include_tasks: slack.yml
-
 - name: install Alacritty
   ansible.builtin.include_tasks: alacritty.yml
   when: ansible_os_family == "Debian"
-
-- name: install tmuxer
-  ansible.builtin.include_tasks: tmuxer.yml

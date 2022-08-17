@@ -1,0 +1,9 @@
+---
+- name: install Todoist in Debian/Ubuntu
+  become: true
+  block:
+    - name: install Todoist from Snap
+      community.general.snap:
+        name: todoist
+        state: present
+  when: ansible_distribution == "Ubuntu"
