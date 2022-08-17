@@ -8,6 +8,7 @@
     - /etc/profile.d
     - "{{ ansible_facts.env.HOME }}/.config/cheat"
     - "{{ ansible_facts.env.HOME }}/.config/alacritty"
+    - "{{ ansible_facts.env.HOME }}/.config/rofi/themes"
 
 - name: Create symlinks for dotfiles
   file:
@@ -26,3 +27,5 @@
     - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
     - { src: ".tmux.conf", dest: "{{ ansible_facts.env.HOME }}/.tmux.conf" }
     - { src: "alacritty.yml", dest: "{{ ansible_facts.env.HOME }}/.config/alacritty/alacritty.yml" }
+    - { src: "rofi/themes/nord.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/themes/nord.rasi" }
+    - { src: "rofi/config.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/config.rasi"}

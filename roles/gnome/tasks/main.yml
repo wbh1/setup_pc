@@ -9,6 +9,29 @@
   when: ansible_distribution == "Fedora"
   notify: enable pop-shell
 
+- name: install pop-shell shell in Ubuntu
+  block:
+    - name: install pop-shell deps
+      ansible.builtin.apt:
+        name:
+          - node-typescript
+          - make
+        state: present
+
+    - name: create pop-shell repo directory
+      ansible.builtin.file:
+        path: "{{ ansible_env['HOME'] }}/github/pop-os/shell"
+        state: directory
+
+    - name: clone pop-shell repo
+      ansible.builtin.git:
+        depth: 1
+        version: master
+        repo: https://github.com/pop-os/shell.git
+        dest: "{{ ansible_env['HOME'] }}/github/pop-os/shell"
+      notify: build pop-shell
+  when: ansible_distribution == "Ubuntu"
+
 - name: install gnome-tweaks
   become: true
   ansible.builtin.package:

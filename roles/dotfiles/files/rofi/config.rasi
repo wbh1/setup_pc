@@ -1,0 +1,9 @@
+/** Basic config file **/
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "Papirus";
+  modi: "linsearch:~/.config/rofi/linsearch.sh,combi";
+  combi-modi: "drun,window,linsearch";
+}
+@import "~/.config/rofi/themes/nord.rasi"

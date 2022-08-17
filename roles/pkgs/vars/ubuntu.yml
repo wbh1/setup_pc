@@ -2,3 +2,4 @@
 pkgs:
   - direnv
   - tmux
+  - rofi
