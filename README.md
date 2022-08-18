@@ -6,6 +6,9 @@ Before running, it is presumed that you have installed Ansible (not just `ansibl
 
 ## Running
 ```bash
+# Install role deps
+# ansible-galaxy install -r roles/requirements.yml --roles-path ./roles
+
 ansible-playbook playbook.yml -K
 ```
 

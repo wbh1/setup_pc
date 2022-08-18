@@ -33,6 +33,11 @@
     - name: fonts
       tags: fonts
       when: ansible_system == "Linux"
+    
+    - name: geerlingguy.docker
+      become: true
+      tags: docker
+      when: ansible_system == "Linux"
 
     - name: gnome
       tags: gnome
