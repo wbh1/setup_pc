@@ -4,3 +4,4 @@ pkgs:
   - direnv
   - bash
   - pgadmin4
+  - syncthing
