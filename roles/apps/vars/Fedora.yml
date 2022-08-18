@@ -1,0 +1,8 @@
+---
+alacritty_deps:
+  - cmake
+  - freetype-devel
+  - fontconfig-devel
+  - libxcb-devel
+  - libxkbcommon-devel
+  - g++

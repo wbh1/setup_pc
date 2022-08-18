@@ -1,25 +1,34 @@
 ---
-- name: Install dependencies
-  become: true
-  ansible.builtin.apt:
-    name: "{{ alacritty_deps }}"
-    state: present
+- name: Install Alacritty
+  block:
+    - name: Install Alacritty dependencies
+      become: true
+      ansible.builtin.package:
+        name: "{{ alacritty_deps }}"
+        state: present
 
-- name: Create dir for alacritty code
-  ansible.builtin.file:
-    path: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
-    state: directory
-    mode: 0755
+    - name: Create dir for alacritty code
+      ansible.builtin.file:
+        path: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
+        state: directory
+        mode: 0755
 
-- name: Clone alacritty repo
-  git:
-    repo: https://github.com/alacritty/alacritty.git
-    dest: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
-    depth: 1
-  
-- name: Build alacritty
-  ansible.builtin.shell: 
-    cmd: "{{ ansible_facts.env.HOME }}/.cargo/bin/cargo build --release"
-    chdir: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
-    creates: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty/target/release/alacritty"
-  notify: alacritty postinstall
+    - name: Clone alacritty repo
+      git:
+        repo: https://github.com/alacritty/alacritty.git
+        dest: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
+        depth: 1
+      
+    - name: Build alacritty
+      ansible.builtin.shell: 
+        cmd: "{{ ansible_facts.env.HOME }}/.cargo/bin/cargo build --release"
+        chdir: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
+        creates: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty/target/release/alacritty"
+      notify: alacritty postinstall
+  when: alacritty_deps is defined
+
+- name: Alacritty install not supported
+  fail:
+    msg: Alacritty installation is not supported on your OS
+  when: alacritty_deps is not defined
+  ignore_errors: true

@@ -21,11 +21,8 @@
     - tmuxer
     - spotify
     - todoist
+    - alacritty
 
 - name: install alfred
   ansible.builtin.include_tasks: alfred.yml
   when: ansible_os_family == "Darwin"
-
-- name: install Alacritty
-  ansible.builtin.include_tasks: alacritty.yml
-  when: ansible_os_family == "Debian"

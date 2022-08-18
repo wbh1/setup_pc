@@ -1,5 +1,5 @@
 ---
-- name: alacrity postinstall
+- name: alacritty postinstall
   become: true
   ansible.builtin.shell:
     cmd: |
