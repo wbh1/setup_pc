@@ -4,6 +4,7 @@ pkgs:
   - tmux
   - rofi
   - syncthing
+  - copyq
 
 services:
   user:
