@@ -21,3 +21,12 @@
     name: "{{ pkgs }}"
     state: latest
   when: pkgs is defined and pkgs|length > 0 and ansible_system == "Linux"
+
+- name: Configure systemd user services
+  systemd:
+    name: "{{ item.name }}"
+    scope: user
+    state: "{{ item.state | default('started') }}"
+    enabled: "{{ item.enabled | default(True) }}"
+  loop: "{{ services.user }}"
+  when: services is defined and services.user is defined and ansible_system == "Linux"

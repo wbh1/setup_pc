@@ -4,3 +4,9 @@ pkgs:
   - tmux
   - rofi
   - syncthing
+
+services:
+  user:
+    - name: syncthing
+      state: started
+      enabled: true
