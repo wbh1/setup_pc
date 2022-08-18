@@ -1,5 +1,5 @@
 # Self
-alias pcsetup="ansible-playbook /Users/whegedus/github/wbh1/setup_pc/playbook.yml"
+alias pcsetup="ansible-playbook $HOME/github/wbh1/setup_pc/playbook.yml"
 
 # K8s
 alias k=kubectl
@@ -12,16 +12,12 @@ alias lin=linode-cli
 # Git
 alias gsync="gcm && glum && gp"
 
-# Copy SSH key to clipboard (MacOS)
-alias cpssh="pbcopy < ~/.ssh/id_rsa.pub"
-
 # Todoist
 alias td="todoist"
 alias today="td l -f '(today | overdue)'"
 
-# Set aliases while in WSL
-if ! [ -z "$WSL_DISTRO_NAME" ]
-then
-  alias approvals="cd ~/bitbucket/wbh/scripts && pipenv run python ~/bitbucket/wbh/scripts/servicenow/approveCHGs.py"
-  alias movechg="cd ~/bitbucket/wbh/scripts && pipenv run python ~/bitbucket/wbh/scripts/servicenow/moveCHG.py"
+# Mac specific
+if [ "$(uname)" = "Darwin" ]; then
+  alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+  alias cpssh="pbcopy < ~/.ssh/id_rsa.pub"
 fi
