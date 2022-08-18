@@ -3,3 +3,4 @@ pkgs:
   - direnv
   - tmux
   - rofi
+  - syncthing
