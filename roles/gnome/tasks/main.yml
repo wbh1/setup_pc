@@ -12,6 +12,7 @@
 - name: install pop-shell shell in Ubuntu
   block:
     - name: install pop-shell deps
+      become: true
       ansible.builtin.apt:
         name:
           - node-typescript
