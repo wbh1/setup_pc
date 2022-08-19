@@ -17,7 +17,8 @@
     - vscode
     - 1password
     - obsidian
-    - slack
+    # Slack install disabled since I manually installed a .deb
+    # - slack
     - tmuxer
     - spotify
     - todoist
