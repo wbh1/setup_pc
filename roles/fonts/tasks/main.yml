@@ -1,46 +1,22 @@
 ---
-- name: Make font family directory for DejaVuSansMono
-  become: yes
+- name: Create NerdFonts directories
   file:
-    path: /usr/share/fonts/DejaVuSansMono
+    path: "{{ ansible_env['HOME'] }}/.local/share/fonts/NerdFonts/{{ item }}"
     state: directory
-    mode: 0755
-    owner: root
-    group: root
+  loop: "{{ fonts }}"
 
-- name: Download Deja Vu Sans NF
-  become: yes
-  ansible.builtin.get_url:
-    url: https://github.com/powerline/fonts/raw/master/DejaVuSansMono/{{ item|urlencode }}
-    dest: /usr/share/fonts/DejaVuSansMono/
-    mode: 0644
-    owner: root
-    group: root
-  loop:
-    - DejaVu Sans Mono for Powerline.ttf
-    - DejaVu Sans Mono Oblique for Powerline.ttf
-    - DejaVu Sans Mono Bold for Powerline.ttf
-    - DejaVu Sans Mono Bold Oblique for Powerline.ttf
-  notify: reload font-cache
-
-- name: Make directory for FiraCode
-  become: yes
-  file:
-    path: /usr/share/fonts/FiraCodeNF
-    state: directory
-    mode: 0755
-    owner: root
-    group: root  
-
-- name: Download FiraCode
-  become: true
-  ansible.builtin.unarchive:
+- name: Install {{ item }}
+  unarchive:
     remote_src: true
-    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-    dest: /usr/share/fonts/FiraCodeNF
-    mode: 0644
-    owner: root
-    group: root
-  notify:
-    - reload font-cache
-    - set gnome fonts
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/{{ item }}.zip"
+    dest: "{{ ansible_env['HOME'] }}/.local/share/fonts/NerdFonts/{{ item }}"
+    creates: "{{ ansible_env['HOME'] }}/.local/share/fonts/NerdFonts/{{ item }}/.installed"
+  loop: "{{ fonts }}"
+
+- name: Mark {{ item }} as installed
+  file:
+    path: "{{ ansible_env['HOME'] }}/.local/share/fonts/NerdFonts/{{ item }}/.installed"
+    state: touch
+    access_time: preserve
+    modification_time: preserve
+  loop: "{{ fonts }}"
