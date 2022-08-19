@@ -3,7 +3,10 @@
 configuration {
   show-icons:         true;
   icon-theme:         "Papirus";
-  modi: "linsearch:~/.config/rofi/linsearch.sh,combi";
-  combi-modi: "drun,window,linsearch";
+  modi:               "linsearch:~/.config/rofi/linsearch.sh,combi";
+  combi-modi:         "drun,window,linsearch";
+
+
+  display-drun: 			"";
 }
 @import "~/.config/rofi/themes/nord.rasi"

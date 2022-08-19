@@ -9,7 +9,7 @@
  */
 
 configuration {
-	font:							"JetBrainsMono Nerd Font Medium 14";
+	font:							"JetBrainsMono Nerd Font Medium 11";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     drun-display-format:            "{name}";
@@ -44,7 +44,7 @@ prompt {
 	background-color: 				@ac;
 	text-color: 					@bg;
     border-radius:                  10px;
-	font:							"JetBrainsMono Nerd Font Medium 14";
+	font:							"JetBrainsMono Nerd Font Medium 11";
 }
 
 textbox-prompt-colon {
