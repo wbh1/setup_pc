@@ -6,14 +6,14 @@
   
   - name: Create dir for cheat sheets
     file:
-      path: "{{ ansible_facts.env.HOME }}/.config/cheat/cheetsheets/community"
+      path: "{{ ansible_facts.env.HOME }}/.config/cheat/cheatsheets/community"
       state: directory
       mode: 0755
   
   - name: download community cheat sheets
     git:
-      repo: git@github.com:cheat/cheatsheets.git
-      dest: "{{ ansible_facts.env.HOME }}/.config/cheat/cheetsheets/community"
+      repo: https://github.com/cheat/cheatsheets.git
+      dest: "{{ ansible_facts.env.HOME }}/.config/cheat/cheatsheets/community"
   
   - name: setup custom Cheat configs
     file:
