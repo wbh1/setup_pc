@@ -1,0 +1,22 @@
+/** Basic config file **/
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "Papirus";
+  modi: "combi";
+  combi-modi: "drun,window";
+  
+  drun {
+      display-name: "";
+  }
+
+  window {
+      display-name: "";
+  }
+
+  timeout {
+      delay: 10;
+      action: "kb-cancel";
+  }
+}
+@theme "nord"

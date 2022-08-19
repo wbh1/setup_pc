@@ -27,5 +27,25 @@
     - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
     - { src: ".tmux.conf", dest: "{{ ansible_facts.env.HOME }}/.tmux.conf" }
     - { src: "alacritty.yml", dest: "{{ ansible_facts.env.HOME }}/.config/alacritty/alacritty.yml" }
+
+- name: Create symlinks for old style rofi configs
+  file:
+    src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop:
     - { src: "rofi/themes/nord.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/themes/nord.rasi" }
     - { src: "rofi/config.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/config.rasi"}
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('20.04', '=')
+
+- name: Create symlinks for new style rofi configs
+  file:
+    src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop:
+    - { src: "rofi/themes/nord.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/themes/nord.rasi" }
+    - { src: "rofi/config-new.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/config.rasi"}
+  when: not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('20.04', '>='))

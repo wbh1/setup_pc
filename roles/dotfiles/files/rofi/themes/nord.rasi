@@ -12,7 +12,6 @@ configuration {
 	font:							"JetBrainsMono Nerd Font Medium 14";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
-    display-drun: 					"Applications";
     drun-display-format:            "{name}";
     disable-history:                false;
 	sidebar-mode: 					false;
@@ -116,7 +115,7 @@ element-icon {
 }
 
 element-text {
-    background-color: 				@al;
+    background-color: 				@se;
     text-color:       				inherit;
     expand:                         true;
     horizontal-align:               0;
