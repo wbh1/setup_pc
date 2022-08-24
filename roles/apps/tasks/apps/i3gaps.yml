@@ -1,0 +1,14 @@
+---
+- block:
+    - name: Add i3-gaps PPA (Regolith)
+      ansible.builtin.apt_repository:
+        repo: ppa:regolith-linux/release
+        state: present
+        update_cache: true
+    
+    - name: Install i3-gaps via apt
+      ansible.builtin.apt:
+        name: i3-gaps
+        state: latest
+  become: true
+  when: ansible_distribution == "Ubuntu"
