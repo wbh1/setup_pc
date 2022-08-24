@@ -5,6 +5,9 @@ pkgs:
   - rofi
   - syncthing
   - copyq
+  - ripgrep
+  - jq
+  - pulseeffects
 
 services:
   user:
