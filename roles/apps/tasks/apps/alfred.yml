@@ -1,0 +1,35 @@
+---
+- name: Install Alfred on Mac
+  when: ansible_os_family == "Darwin"
+  block:
+    # Needed for https://alfred-spotify-mini-player.com/
+    - name: install PHP
+      homebrew:
+        name: php
+        state: installed
+
+    - name: Create dir to download workflows to
+      file:
+        path: "{{ ansible_env['HOME'] }}/.alfredworkflows"
+        state: directory
+        mode: 0755
+
+    - name: Clone Alfred workflows from Github
+      get_url:
+        url: "https://github.com/{{ item.repo }}/releases/download/{{ item.version }}/{{ item.name }}"
+        dest: "{{ ansible_env['HOME'] }}/.alfredworkflows/{{ item.name }}"
+      register: alfred_workflows
+      loop_control:
+        label: "{{ item.repo }}"
+      loop:
+        - name: github.alfredworkflow
+          version: v1.7.1
+          repo: gharlan/alfred-github-workflow
+        - name: spotifyminiplayer.alfredworkflow
+          version: v-11.8
+          repo: vdesabou/alfred-spotify-mini-player
+
+    - name: Don't forget to install your Alfred workflows!
+      debug:
+        msg: "New workflows downloaded. Install them in Alfred!"
+      when: alfred_workflows.changed

@@ -1,7 +1,0 @@
----
-- name: install Slack from snap
-  become: true
-  community.general.snap:
-    name: slack
-    state: present
-  when: ansible_distribution == "Ubuntu"

@@ -12,18 +12,6 @@
 
 - name: install {{ item }} 
   ansible.builtin.include_tasks:
-    file: "{{ item }}.yml"
-  loop:
-    - vscode
-    - 1password
-    - obsidian
-    # Slack install disabled since I manually installed a .deb
-    # - slack
-    - tmuxer
-    - spotify
-    - todoist
-    - alacritty
-
-- name: install alfred
-  ansible.builtin.include_tasks: alfred.yml
-  when: ansible_os_family == "Darwin"
+    file: "{{ item }}"
+  with_fileglob:
+    - "tasks/apps/*.yml"
