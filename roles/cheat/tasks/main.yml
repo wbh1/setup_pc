@@ -4,16 +4,24 @@
     args:
       creates: "{{ ansible_facts.env.HOME }}/go/bin/cheat"
   
-  - name: Create dir for cheat sheets
+  - name: Create dirs for cheat sheets
     file:
-      path: "{{ ansible_facts.env.HOME }}/.config/cheat/cheatsheets/community"
+      path: "{{ item }}"
       state: directory
       mode: 0755
+    loop:
+      - "{{ ansible_facts.env.HOME }}/.config/cheat/cheatsheets/community"
+      - "{{ ansible_facts.env.HOME }}/.config/cheat/cheatsheets/personal"
   
   - name: download community cheat sheets
     git:
       repo: https://github.com/cheat/cheatsheets.git
       dest: "{{ ansible_facts.env.HOME }}/.config/cheat/cheatsheets/community"
+  
+  - name: download personal cheat sheets
+    git:
+      repo: https://github.com/wbh1/cheatsheets.git
+      dest: "{{ ansible_facts.env.HOME }}/.config/cheat/cheatsheets/personal"
   
   - name: setup custom Cheat configs
     file:
