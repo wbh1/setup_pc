@@ -2,3 +2,4 @@
 pkgs:
   - direnv
   - rofi
+  - sway
