@@ -1,0 +1,9 @@
+---
+- name: Set desktop to Sway on specific OS
+  set_fact:
+    desktop: sway
+  when: ansible_distribution == "Fedora" and ansible_distribution_version is version("36", ">=")
+
+- name: Configure gnome
+  ansible.builtin.include_tasks: gnome.yml
+  when: desktop == "gnome"

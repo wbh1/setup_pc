@@ -39,6 +39,6 @@
       tags: docker
       when: ansible_system == "Linux"
 
-    - name: gnome
-      tags: gnome
-      when: ansible_env["GNOME_SHELL_SESSION_MODE"] is defined
+    - name: desktop
+      tags: desktop
+      when: ansible_system == "Linux"
