@@ -8,6 +8,8 @@ pkgs:
   - ripgrep
   - jq
   - pulseeffects
+  - xclip
+  - graphviz
 
 services:
   user:
