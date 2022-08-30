@@ -22,7 +22,7 @@ if [ "$uname_output" = "Darwin" ]; then
   PATH=$PATH:$HOME/Library/Python/3.9/bin
 fi
 
-PATH=$PATH:~/go/bin
+PATH=$PATH:~/go/bin:/usr/local/go/bin
 
 PATH="$HOME/.poetry/bin:$PATH"
 
