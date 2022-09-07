@@ -10,5 +10,15 @@
       ansible.builtin.apt:
         name: i3-gaps
         state: latest
+
+    - name: Install i3-layout-manager
+      become: true
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/klaxalk/i3-layout-manager/master/layout_manager.sh
+        dest: /usr/local/bin/layout_manager
+        mode: 0755
+        owner: root
+        group: root
+
   become: true
   when: ansible_distribution == "Ubuntu"
