@@ -7,6 +7,6 @@ configuration {
   combi-modi:         "drun,window,linsearch";
 
 
-  display-drun: 			"";
+  display-drun: 			"";
 }
 @import "~/.config/rofi/themes/nord.rasi"
