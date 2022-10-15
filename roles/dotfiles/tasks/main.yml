@@ -7,6 +7,7 @@
   loop:
     - /etc/profile.d
     - "{{ ansible_facts.env.HOME }}/.config/cheat"
+    - "{{ ansible_facts.env.HOME }}/.config/sway"
     - "{{ ansible_facts.env.HOME }}/.config/alacritty"
     - "{{ ansible_facts.env.HOME }}/.config/rofi/themes"
 
@@ -27,6 +28,7 @@
     - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
     - { src: ".tmux.conf", dest: "{{ ansible_facts.env.HOME }}/.tmux.conf" }
     - { src: "alacritty.yml", dest: "{{ ansible_facts.env.HOME }}/.config/alacritty/alacritty.yml" }
+    - { src: "sway", dest: "{{ ansible_facts.env.HOME }}/.config/sway/config" }
 
 - name: Create symlinks for old style rofi configs
   file:
