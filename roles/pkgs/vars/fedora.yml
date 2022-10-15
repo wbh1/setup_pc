@@ -5,6 +5,9 @@ pkgs:
   - dunst
   - light
   - sway
+  - waybar
+  - rofi-wayland
+  - lxpolkit
   - mousepad
   - pavucontrol
   - pulseaudio-utils
