@@ -1,6 +1,9 @@
 # Self
 alias pcsetup="ansible-playbook $HOME/github/wbh1/setup_pc/playbook.yml"
 
+# vscode wayland
+alias vscode="/usr/bin/code --ozone-platform=wayland"
+
 # K8s
 alias k=kubectl
 alias kctx=kubectx
