@@ -11,7 +11,7 @@
 configuration {
 	font:							"JetBrainsMono Nerd Font Medium 11";
     show-icons:                     true;
-	icon-theme: 					"Papirus";
+	icon-theme: 					"Zafiro-Icons-Dark";
     drun-display-format:            "{name}";
     disable-history:                false;
 	sidebar-mode: 					false;

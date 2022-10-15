@@ -1,5 +1,5 @@
 ---
-- name: alacritty postinstall
+- name: Move alacritty binary and desktop file 
   become: true
   ansible.builtin.shell:
     cmd: |
@@ -9,3 +9,12 @@
       update-desktop-database && \
       gsettings set org.gnome.desktop.default-applications.terminal exec alacritty
     chdir: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
+  listen: alacritty postinstall
+
+- name: Update alternatives for terminal
+  become: true
+  community.general.alternatives:
+    name: x-terminal-emulator
+    path: /usr/local/bin/alacritty
+    link: /usr/bin/x-terminal-emulator
+  listen: alacritty postinstall
