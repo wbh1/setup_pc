@@ -7,7 +7,7 @@ configuration {
   combi-modi: "drun,window";
   
   drun {
-      display-name: "";
+      display-name: " ";
   }
 
   window {
