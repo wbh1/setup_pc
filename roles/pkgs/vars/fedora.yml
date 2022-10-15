@@ -7,7 +7,7 @@ pkgs:
   - sway
   - waybar
   - rofi-wayland
-  - lxpolkit
+  - polkit-gnome
   - mousepad
   - pavucontrol
   - pulseaudio-utils
