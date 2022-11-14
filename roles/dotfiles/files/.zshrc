@@ -57,6 +57,10 @@ if (( $+commands[helm] )); then
   source <(helm completion zsh)
 fi
 
+if (( $+commands[flux] )); then
+  source <(flux completion zsh)
+fi
+
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init - zsh)"
 fi
