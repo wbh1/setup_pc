@@ -90,7 +90,7 @@ fi
 
 # NodeJS Version Management
 export N_PREFIX=$HOME
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
 
 (( $+commands[bashcompinit] )) && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
