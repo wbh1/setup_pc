@@ -11,3 +11,5 @@ pkgs:
   - mousepad
   - pavucontrol
   - pulseaudio-utils
+  - docker-compose-plugin
+  - copyq
