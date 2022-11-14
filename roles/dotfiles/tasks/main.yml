@@ -11,6 +11,25 @@
     - "{{ ansible_facts.env.HOME }}/.config/alacritty"
     - "{{ ansible_facts.env.HOME }}/.config/rofi/themes"
 
+- name: configure Regolith
+  block:
+    - name: Create regolith directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: 0755
+      loop:
+        - "{{ ansible_facts.env.HOME }}/.config/regolith/i3"
+    - name: Create regolith symlinks
+      file:
+        src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
+        dest: "{{ item.dest }}"
+        state: link
+        force: true
+      loop:
+        - { src: "regolith-i3.config", dest: "{{ ansible_facts.env.HOME }}/.config/regolith/i3/config" }
+  when: ansible_env["XDG_SESSION_DESKTOP"] == "regolith"
+
 - name: Create symlinks for dotfiles
   file:
     src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
