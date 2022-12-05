@@ -9,6 +9,27 @@
       paths:
         - 'vars'
 
+- name: Configure additional Ubuntu repos
+  block:
+    - name: Add Ubuntu apt key
+      ansible.builtin.apt_key:
+        keyserver: "{{ item.key.server }}"
+        id: "{{ item.key.id }}"
+        state: present
+      when: item.key is defined and item.key
+      loop: "{{ pkg_repos }}"
+
+    - name: Add Ubuntu apt repo
+      ansible.builtin.apt_repository:
+        repo: "{{ item.link }}"
+        state: present 
+      when: item.link is defined and item.link
+      loop: "{{ pkg_repos }}"
+  when: >
+    ansible_distribution == "Ubuntu"
+    and pkg_repos is defined
+    and pkg_repos
+
 - name: Install Mac packages
   homebrew:
     name: "{{ pkgs }}"

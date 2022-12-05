@@ -10,6 +10,13 @@ pkgs:
   - pulseeffects
   - xclip
   - graphviz
+  - firefox
+
+pkg_repos:
+  - link: "deb http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu {{ ansible_distribution_release }} main"
+    key:
+      server: keyserver.ubuntu.com
+      id: A6DCF7707EBC211F
 
 services:
   user:
