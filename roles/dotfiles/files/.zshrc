@@ -96,3 +96,23 @@ export PATH=$HOME/bin:$PATH
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 export EDITOR=vim
+
+ssh() {
+  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = 'tmux: server' ]; then
+    tmux rename-window ${@: -1} # <---- ここ
+    command ssh "$@"
+    tmux set-window-option automatic-rename "on" 1>/dev/null
+  else
+    command ssh "$@"
+  fi
+}
+
+hss() {
+  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = 'tmux: server' ]; then
+    tmux rename-window ${@: -1} # <---- ここ
+    command hss "$@"
+    tmux set-window-option automatic-rename "on" 1>/dev/null
+  else
+    command hss "$@"
+  fi
+}
