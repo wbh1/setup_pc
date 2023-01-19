@@ -1,3 +1,6 @@
+# Path to your oh-my-zsh installation.
+export ZSH="${HOME}/.oh-my-zsh"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -33,8 +36,6 @@ export PATH
 # Rust
 [[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
 
 # Set theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -43,7 +44,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # eval `dircolors $HOME/.dircolors`
 
 # Which plugins would you like to load?
-plugins=(git asdf docker)
+plugins=(git asdf docker golang terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -75,7 +76,7 @@ source ~/.aliases
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Source scripts in profile.d
-# source /etc/profile.d/*.sh
+source /etc/profile.d/*.sh
 
 # Go Version Management
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
@@ -93,7 +94,6 @@ export N_PREFIX=$HOME
 export PATH=$HOME/bin:$PATH
 
 (( $+commands[bashcompinit] )) && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
 
 export EDITOR=vim
 
