@@ -24,3 +24,8 @@ if [ "$(uname)" = "Darwin" ]; then
   alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
   alias cpssh="pbcopy < ~/.ssh/id_rsa.pub"
 fi
+
+alias vaultlogin="vault login -method ldap username=${USER}"
+
+# Clipboard
+alias xclippy="xclip -i -sel clip"
