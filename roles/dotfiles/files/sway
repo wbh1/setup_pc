@@ -36,11 +36,13 @@ set $volume_down $onscreen_bar $(pactl set-sink-volume @DEFAULT_SINK@ -5% && $si
 set $volume_up $onscreen_bar $(pactl set-sink-volume @DEFAULT_SINK@ +5% && $sink_volume)
 set $volume_mute $onscreen_bar $(pactl set-sink-mute @DEFAULT_SINK@ toggle && pactl get-sink-mute @DEFAULT_SINK@ | sed -En "/no/ s/.*/$($sink_volume)/p; /yes/ s/.*/0/p")
 
+# CopyQ
+set $copyq_toggle copyq -e "toggle()"
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/will/Pictures/Wallpapers/Linode.png fill
+output * bg /home/will/Pictures/Wallpapers/mountains.jpg fill
 default_border pixel
 default_floating_border pixel
 
@@ -66,6 +68,7 @@ gaps outer 0
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+for_window [app_id="com.github.hluk.copyq"] floating enable
 ### Input configuration
 #
 input type:touchpad {
@@ -94,6 +97,9 @@ input type:touchpad {
     bindsym $mod+Return exec $term
     # Open Firefox
     bindsym $mod+Shift+Return exec /usr/bin/firefox
+
+    # Toggle CopyQ Menu
+    bindsym Ctrl+Shift+grave exec $copyq_toggle
 
     # --locked flags allow the buttons to be used whilst the screen is locked.
     bindsym --locked XF86AudioRaiseVolume exec $volume_up
