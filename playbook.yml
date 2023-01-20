@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   vars:
-    GO_VERSION: 1.18.4
+    GO_VERSION: 1.19.4
   roles:
     - name: zsh
       tags: zsh
@@ -26,6 +26,9 @@
     # Install assorted packages
     - name: pkgs
       tags: pkgs
+    
+    - name: repos
+      tags: repos
     
     - name: apps
       tags: apps

@@ -1,0 +1,4 @@
+github_repos:
+  - url: https://github.com/arcticicestudio/nord-tmux.git
+    org: arcticicestudio
+    name: nord-tmux

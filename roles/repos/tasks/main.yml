@@ -1,0 +1,15 @@
+- name: Create directories
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/github"
+    state: directory
+    mode: 0755
+
+# TODO: Extract org/name from URL
+- name: Clone github repos
+  git:
+    repo: "{{ repo.url }}"
+    dest: "{{ ansible_facts.env.HOME }}/github/{{repo.org}}/{{repo.name}}"
+    depth: 1
+  loop: "{{ github_repos }}"
+  loop_control:
+    loop_var: repo
