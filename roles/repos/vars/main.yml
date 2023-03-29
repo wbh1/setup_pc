@@ -2,3 +2,7 @@ github_repos:
   - url: https://github.com/arcticicestudio/nord-tmux.git
     org: arcticicestudio
     name: nord-tmux
+
+  - url: https://github.com/vivien/i3blocks-contrib.git
+    org: vivien
+    name: i3blocks-contrib
