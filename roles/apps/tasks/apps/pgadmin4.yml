@@ -1,0 +1,5 @@
+---
+- name: install pgadmin4
+  homebrew_cask:
+    name: pgadmin4
+  when: ansible_os_family == "Darwin"
