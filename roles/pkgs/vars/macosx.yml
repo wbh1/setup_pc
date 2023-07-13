@@ -5,3 +5,4 @@ pkgs:
   - bash
   - pgadmin4
   - syncthing
+  - derailed/k9s/k9s
