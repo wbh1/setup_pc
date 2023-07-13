@@ -6,3 +6,4 @@ pkgs:
   - pgadmin4
   - syncthing
   - derailed/k9s/k9s
+  - switchaudio-osx
