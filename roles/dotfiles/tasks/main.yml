@@ -1,16 +1,21 @@
 ---
+- name: Load variable file based on the OS type.
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_distribution | lower }}.yml'
+        - '{{ ansible_os_family | lower }}.yml'
+        - 'default.yml'
+      paths:
+        - 'vars'
+
 - name: Verify creation of directories
   file:
     path: "{{ item }}"
     state: directory
     mode: 0755
-  loop:
-    - /etc/profile.d
-    - "{{ ansible_facts.env.HOME }}/.config/cheat"
-    - "{{ ansible_facts.env.HOME }}/.config/sway"
-    - "{{ ansible_facts.env.HOME }}/.config/waybar"
-    - "{{ ansible_facts.env.HOME }}/.config/alacritty"
-    - "{{ ansible_facts.env.HOME }}/.config/rofi/themes"
+  loop: "{{ dotfiles.dirs }}"
 
 - name: configure Regolith
   block:
@@ -37,20 +42,7 @@
     dest: "{{ item.dest }}"
     state: link
     force: true
-  loop:
-    - { src: ".zshrc", dest: "{{ ansible_facts.env.HOME }}/.zshrc" }
-    - { src: ".spacecowboy.sh", dest: "{{ ansible_facts.env.HOME }}/.spacecowboy.sh" }
-    - { src: ".zlogout", dest: "{{ ansible_facts.env.HOME }}/.zlogout" }
-    - { src: ".p10k.zsh", dest: "{{ ansible_facts.env.HOME }}/.p10k.zsh" }
-    - { src: ".gitconfig", dest: "{{ ansible_facts.env.HOME }}/.gitconfig" }
-    - { src: ".aliases", dest: "{{ ansible_facts.env.HOME }}/.aliases" }
-    - { src: ".dircolors", dest: "{{ ansible_facts.env.HOME }}/.dircolors" }
-    - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
-    - { src: ".tmux.conf", dest: "{{ ansible_facts.env.HOME }}/.tmux.conf" }
-    - { src: "alacritty.yml", dest: "{{ ansible_facts.env.HOME }}/.config/alacritty/alacritty.yml" }
-    - { src: "sway", dest: "{{ ansible_facts.env.HOME }}/.config/sway/config" }
-    - { src: "waybar/config", dest: "{{ ansible_facts.env.HOME }}/.config/waybar/config" }
-    - { src: "waybar/style.css", dest: "{{ ansible_facts.env.HOME }}/.config/waybar/style.css" }
+  loop: "{{ dotfiles.files }}"
 
 - name: Create symlinks for old style rofi configs
   file:
@@ -72,4 +64,7 @@
   loop:
     - { src: "rofi/themes/nord.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/themes/nord.rasi" }
     - { src: "rofi/config-new.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/config.rasi"}
-  when: not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('20.04', '>='))
+  when: >
+    not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('20.04', '>='))
+    and
+    ansible_os_family in ["RedHat", "Debian"]
