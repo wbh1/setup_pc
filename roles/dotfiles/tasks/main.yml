@@ -29,7 +29,7 @@
         force: true
       loop:
         - { src: "regolith-i3.config", dest: "{{ ansible_facts.env.HOME }}/.config/regolith/i3/config" }
-  when: ansible_env["XDG_SESSION_DESKTOP"] == "regolith"
+  when: ansible_env["XDG_SESSION_DESKTOP"] is defined and ansible_env["XDG_SESSION_DESKTOP"] == "regolith"
 
 - name: Create symlinks for dotfiles
   file:
