@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
@@ -44,7 +45,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # eval `dircolors $HOME/.dircolors`
 
 # Which plugins would you like to load?
-plugins=(git asdf docker golang terraform)
+plugins=(git asdf docker golang terraform fzf-zsh-plugin)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -65,6 +66,10 @@ fi
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init - zsh)"
 fi
+
+#if (( $+commands[op] )); then
+#  eval "$(op signin)"
+#fi
 
 if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
@@ -125,3 +130,4 @@ hss() {
     command hss "$@"
   fi
 }
+# zprof

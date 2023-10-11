@@ -36,6 +36,13 @@
         - { src: "regolith-i3.config", dest: "{{ ansible_facts.env.HOME }}/.config/regolith/i3/config" }
   when: ansible_env["XDG_SESSION_DESKTOP"] is defined and ansible_env["XDG_SESSION_DESKTOP"] == "regolith"
 
+- name: install ZSH plugins
+  git:
+    repo: https://github.com/unixorn/fzf-zsh-plugin.git
+    dest: "{{ ansible_facts.env.HOME }}/.oh-my-zsh/custom/plugins/fzf-zsh-plugin"
+    depth: 1
+  when: ansible_facts.env.ZSH is defined and ".oh-my-zsh" in ansible_facts.env.ZSH
+
 - name: Create symlinks for dotfiles
   file:
     src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
