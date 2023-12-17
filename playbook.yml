@@ -35,13 +35,13 @@
 
     - name: fonts
       tags: fonts
-      when: ansible_system == "Linux"
+      when: ansible_system == "Linux" and 'WSL_DISTRO_NAME' not in ansible_env.keys()
     
     - name: geerlingguy.docker
       become: true
       tags: docker
-      when: ansible_system == "Linux"
+      when: ansible_system == "Linux" and 'WSL_DISTRO_NAME' not in ansible_env.keys()
 
     - name: desktop
       tags: desktop
-      when: ansible_system == "Linux"
+      when: ansible_system == "Linux" and 'WSL_DISTRO_NAME' not in ansible_env.keys()

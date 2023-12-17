@@ -25,7 +25,7 @@
         chdir: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty"
         creates: "{{ ansible_facts.env.HOME }}/github/alacritty/alacritty/target/release/alacritty"
       notify: alacritty postinstall
-  when: alacritty_deps is defined
+  when: alacritty_deps is defined and 'WSL_DISTRO_NAME' not in ansible_env.keys()
 
 - name: Alacritty install not supported
   fail:
