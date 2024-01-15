@@ -45,7 +45,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # eval `dircolors $HOME/.dircolors`
 
 # Which plugins would you like to load?
-plugins=(git asdf docker golang terraform fzf-zsh-plugin)
+plugins=(git asdf docker golang terraform fzf-zsh-plugin zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -151,3 +151,4 @@ if (( ${+WSL_DISTRO_NAME} )); then
 
   export KUBECONFIG="${$(ls ~/.kube/config.d/*)//$'\n'/:}"
 fi
+# zprof
