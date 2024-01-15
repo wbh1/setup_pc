@@ -1,1 +1,1 @@
-sh ~/.spacecowboy.sh; sleep 2
+zsh ~/.spacecowboy.sh; sleep 1
