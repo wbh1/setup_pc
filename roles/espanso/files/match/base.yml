@@ -32,5 +32,11 @@ matches:
   - trigger: ":hss"
     replace: 'tmuxer -c "hss {}"'
 
-  - trigger: ":du"
-    replace: du -shx --exclude /proc --exclude /vbin /* | sort -rh
+  - trigger: ":du -shx"
+    replace: 'du -shx --exclude /proc --exclude /vbin /* | sort -rh'
+
+  - trigger: ":o11yhelp"
+    replace: 'Thanks for reaching out! Please be sure to tag @firechief-sre-o11y for any questions or help requests to ensure prompt attention'
+
+  - trigger: ":amtoolr"
+    replace: 'amtool config routes test --config.file=/etc/alertmanager/alertmanager.yml'

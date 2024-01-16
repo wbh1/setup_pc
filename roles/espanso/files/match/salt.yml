@@ -7,7 +7,7 @@ matches:
     replace: 'sudo salt-call --local saltutil.clear_cache; sudo salt-call saltutil.refresh_grains;'
 
   - trigger: ":highstate"
-    replace: "sudo salt-call state.highstate --state-output=changes"
+    replace: "sudo salt-call state.highstate --return prometheus_highstate,last_highstate_log --state-output=changes"
 
   - trigger: ":tshighstate"
     replace: cat /var/lib/prometheus/node-exporter/saltHighState.prom | tail -1 | awk '{split($2,a,"."); print a[1];}' | xargs -I % sh -c 'date -d @%'
