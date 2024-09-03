@@ -2,5 +2,16 @@ name: linode
 parent: default
 
 matches:
-  - regex: ":j(?P<jira>[A-Z]{3}-\\d+)"
-    replace: "https://jira.linode.com/browse/{{jira}}"
+  - regex: "^:jira-(?P<jira>[A-Z]{3}-\\d+) $"
+    replace: "https://jira.linode.com/browse/{{jira}} "
+
+  # PRs  
+  - regex: "^:bitsp-(?P<org>.+)/(?P<repo>.+)#(?P<number>\\d+) $"
+    replace: "[{{org}}/{{repo}}#{{number}}](https://bits.linode.com/{{org}}/{{repo}}/pull/{{number}})"
+
+  # Issues
+  - regex: "^:bitsi-(?P<org>[^/]+)/(?P<repo>[^#]+)#(?P<number>\\d+) $"
+    replace: "[{{org}}/{{repo}}#{{number}}](https://bits.linode.com/{{org}}/{{repo}}/issues/{{number}})"
+
+  - trigger: ":saltinstall"
+    replace: "USE_PERSISTENT_CONNECTIONS=True ansible-playbook -i inventory/bapi.yml -i inventory/static.yml playbooks/salt/install.yml -f 13 "

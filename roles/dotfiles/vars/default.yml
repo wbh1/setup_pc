@@ -22,3 +22,5 @@ dotfiles:
     - { src: "sway", dest: "{{ ansible_facts.env.HOME }}/.config/sway/config" }
     - { src: "waybar/config", dest: "{{ ansible_facts.env.HOME }}/.config/waybar/config" }
     - { src: "waybar/style.css", dest: "{{ ansible_facts.env.HOME }}/.config/waybar/style.css" }
+    - { src: "mise.toml", dest: "{{ ansible_facts.env.HOME }}/.config/mise/config.toml" }
+    - { src: "starship.toml", dest: "{{ ansible_facts.env.HOME }}/.config/starship.toml" }

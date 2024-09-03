@@ -2,13 +2,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 uname_output=$(uname)
 
 # # # # # # # # # # # #
@@ -39,13 +32,13 @@ export PATH
 
 
 # Set theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Fix `ls` colors for Solarized Dark theme
 # eval `dircolors $HOME/.dircolors`
 
 # Which plugins would you like to load?
-plugins=(git asdf docker golang terraform fzf-zsh-plugin zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git docker golang terraform fzf-zsh-plugin zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -67,6 +60,16 @@ if (( $+commands[rbenv] )); then
   eval "$(rbenv init - zsh)"
 fi
 
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+  # required so that commands from mise show in +commands var
+  eval "$(mise hook-env -s zsh)"
+fi
+
+if (( $+commands[rye] )); then
+  source "$HOME/.rye/env"
+fi
+
 #if (( $+commands[op] )); then
 #  eval "$(op signin)"
 #fi
@@ -75,13 +78,25 @@ if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
 fi
 
-source ~/.aliases
+if (( $+commands[jira] )); then
+  eval "$(jira completion zsh)"
+fi
+
+if (( $+commands[hss] )); then
+  hss_repo=$(dirname $(ls -l ~/.hss.yml | awk '{print $11}'))
+  # only update once a day
+  if [[ $(date +'%D') -eq $(date -r ${hss_repo}/.git +'%y') ]]; then 
+    cd $(dirname $(ls -l ~/.hss.yml | awk '{print $11}')) && git pull -q upstream master
+    cd -
+  fi
+fi
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Source scripts in profile.d
-source /etc/profile.d/*.sh
+# source /etc/profile.d/*.sh
 
 # Go Version Management
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
@@ -95,8 +110,8 @@ fi
 
 
 # NodeJS Version Management
-export N_PREFIX=$HOME
-export PATH=$HOME/bin:$PATH
+# export N_PREFIX=$HOME
+# export PATH=$HOME/bin:$PATH
 
 (( $+commands[bashcompinit] )) && bashcompinit
 
@@ -151,4 +166,10 @@ if (( ${+WSL_DISTRO_NAME} )); then
 
   export KUBECONFIG="${$(ls ~/.kube/config.d/*)//$'\n'/:}"
 fi
+
+export VAULT_ADDR="https://vault.linode.com:8200"
+export TZ_LIST="UTC;US/Pacific,West Coast;Asia/Calcutta,India"
+source ~/.aliases
+
+eval "$(starship init zsh)"
 # zprof
