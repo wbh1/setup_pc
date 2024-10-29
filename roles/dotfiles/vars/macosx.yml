@@ -2,18 +2,4 @@ dotfiles:
   dirs:
     - /etc/profile.d
     - "{{ ansible_facts.env.HOME }}/.config/cheat"
-    - "{{ ansible_facts.env.HOME }}/.config/alacritty"
-    - "{{ ansible_facts.env.HOME }}/.config/mise"
-  files:
-    - { src: ".zshrc", dest: "{{ ansible_facts.env.HOME }}/.zshrc" }
-    - { src: ".spacecowboy.sh", dest: "{{ ansible_facts.env.HOME }}/.spacecowboy.sh" }
-    - { src: ".zlogout", dest: "{{ ansible_facts.env.HOME }}/.zlogout" }
-    - { src: ".p10k.zsh", dest: "{{ ansible_facts.env.HOME }}/.p10k.zsh" }
-    - { src: ".gitconfig", dest: "{{ ansible_facts.env.HOME }}/.gitconfig" }
-    - { src: ".aliases", dest: "{{ ansible_facts.env.HOME }}/.aliases" }
-    - { src: ".dircolors", dest: "{{ ansible_facts.env.HOME }}/.dircolors" }
-    - { src: ".flake8", dest: "{{ ansible_facts.env.HOME }}/.flake8" }
-    - { src: ".tmux.conf", dest: "{{ ansible_facts.env.HOME }}/.tmux.conf" }
-    - { src: "alacritty-macosx.yml", dest: "{{ ansible_facts.env.HOME }}/.config/alacritty/alacritty.yml" }
-    - { src: "mise.toml", dest: "{{ ansible_facts.env.HOME }}/.config/mise/config.toml" }
-    - { src: "starship.toml", dest: "{{ ansible_facts.env.HOME }}/.config/starship.toml" }
+  files: []

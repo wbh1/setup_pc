@@ -5,3 +5,5 @@ pkgs:
   - bash
   - syncthing
   - switchaudio-osx
+  - deskpad
+  - neovim
