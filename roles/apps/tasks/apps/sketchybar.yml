@@ -7,7 +7,7 @@
         name: FelixKratz/formulae
 
     - name: Install sketchybar
-      homebrew:
-        name: sketchybar
+      community.general.homebrew:
+        name: felixkratz/formulae/sketchybar
         state: installed
         update_homebrew: true
