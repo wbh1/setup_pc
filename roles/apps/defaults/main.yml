@@ -1,0 +1,9 @@
+apps:
+  disabled:
+    - 1password
+    - alacritty
+    - alfred
+    - pgadmin4
+    - slack
+    - spotify
+    - vscode

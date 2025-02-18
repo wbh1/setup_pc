@@ -10,8 +10,8 @@
       paths:
         - 'vars'
 
-- name: install {{ item }} 
+- name: install {{ item }}
   ansible.builtin.include_tasks:
-    file: "{{ item }}"
-  with_fileglob:
-    - "tasks/apps/*.yml"
+    file: "tasks/apps/{{ item }}.yml"
+  loop: "{{ lookup('fileglob', 'tasks/apps/*.yml', wantlist=True)|map('regex_replace', '\\.yml', '')|map('basename')|reject('in', apps['disabled']) }}"
+
