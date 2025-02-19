@@ -18,25 +18,6 @@
   become: true
   loop: "{{ dotfiles.dirs }}"
 
-- name: configure Regolith
-  block:
-    - name: Create regolith directories
-      file:
-        path: "{{ item }}"
-        state: directory
-        mode: 0755
-      loop:
-        - "{{ ansible_facts.env.HOME }}/.config/regolith/i3"
-    - name: Create regolith symlinks
-      file:
-        src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
-        dest: "{{ item.dest }}"
-        state: link
-        force: true
-      loop:
-        - { src: "regolith-i3.config", dest: "{{ ansible_facts.env.HOME }}/.config/regolith/i3/config" }
-  when: ansible_env["XDG_SESSION_DESKTOP"] is defined and ansible_env["XDG_SESSION_DESKTOP"] == "regolith"
-
 - name: Create symlinks for dotfiles
   file:
     src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
@@ -44,17 +25,6 @@
     state: link
     force: true
   loop: "{{ dotfiles.files }}"
-
-- name: Create symlinks for old style rofi configs
-  file:
-    src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    state: link
-    force: true
-  loop:
-    - { src: "rofi/themes/nord.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/themes/nord.rasi" }
-    - { src: "rofi/config.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/config.rasi"}
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('20.04', '=')
 
 - name: Create symlinks for new style rofi configs
   file:
