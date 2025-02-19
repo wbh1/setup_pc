@@ -1,2 +1,0 @@
-espanso_install_dir: /Applications/
-espanso_config_dir: "{{ ansible_facts.env.HOME }}/Library/Preferences/espanso/"

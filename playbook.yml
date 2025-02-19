@@ -8,10 +8,6 @@
     - name: dotfiles
       tags: dotfiles
 
-    - name: espanso
-      tags: espanso
-      when: ansible_os_family == "Darwin"
-
     # Install assorted packages
     - name: pkgs
       tags: pkgs

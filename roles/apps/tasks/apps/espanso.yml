@@ -1,0 +1,5 @@
+---
+- name: Install Espanso via Homebrew
+  homebrew_cask:
+    name: espanso
+  when: ansible_os_family == "Darwin"

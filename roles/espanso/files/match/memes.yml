@@ -1,6 +1,0 @@
-name: memes 
-parent: default
-
-matches:
-  - trigger: ":m_dis"
-    replace: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fi1.kym-cdn.com%2Fphotos%2Fimages%2Foriginal%2F000%2F788%2F274%2Fdf0.gif'
