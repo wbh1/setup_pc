@@ -7,3 +7,8 @@
         name: todoist
         state: present
   when: ansible_distribution == "Ubuntu"
+
+- name: Install Todoist on Mac
+  when: ansible_os_family == "Darwin"
+  homebrew_cask:
+    name: todoist

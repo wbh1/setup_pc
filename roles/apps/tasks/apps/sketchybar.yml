@@ -10,4 +10,3 @@
       community.general.homebrew:
         name: felixkratz/formulae/sketchybar
         state: installed
-        update_homebrew: true

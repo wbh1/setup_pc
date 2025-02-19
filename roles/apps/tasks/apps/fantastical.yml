@@ -1,0 +1,4 @@
+- name: Install Fantastical on Mac
+  when: ansible_os_family == "Darwin"
+  homebrew_cask:
+    name: fantastical

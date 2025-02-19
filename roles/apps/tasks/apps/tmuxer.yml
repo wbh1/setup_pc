@@ -1,7 +1,6 @@
 ---
 - name: download tmuxer
-  become: yes
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/tjhop/tmuxer/master/tmuxer
-    dest: /usr/local/bin/tmuxer
+    dest: "{{ ansible_facts.env.HOME }}/.local/bin/tmuxer"
     mode: '0755'

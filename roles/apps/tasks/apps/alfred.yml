@@ -1,5 +1,6 @@
 ---
-- name: Install Alfred on Mac
+- name: Configure Alfred on Mac
+  # TODO: Handle actual installation
   when: ansible_os_family == "Darwin"
   block:
     # Needed for https://alfred-spotify-mini-player.com/
@@ -25,9 +26,6 @@
         - name: github.alfredworkflow
           version: v1.7.1
           repo: gharlan/alfred-github-workflow
-        - name: spotifyminiplayer.alfredworkflow
-          version: v-11.8
-          repo: vdesabou/alfred-spotify-mini-player
 
     - name: Don't forget to install your Alfred workflows!
       debug:

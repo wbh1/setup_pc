@@ -1,0 +1,7 @@
+---
+- name: Install Mise
+  block:
+    - name: "[Mise] Download and run install script"
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      args:
+        creates: ~/.local/share/mise

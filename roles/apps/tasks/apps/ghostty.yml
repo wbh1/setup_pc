@@ -1,0 +1,5 @@
+---
+- name: install Ghostty
+  homebrew_cask:
+    name: ghostty
+  when: ansible_os_family == "Darwin"
