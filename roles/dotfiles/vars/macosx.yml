@@ -1,5 +1,3 @@
 dotfiles:
-  dirs:
-    - /etc/profile.d
-    - "{{ ansible_facts.env.HOME }}/.config/cheat"
+  dirs: []
   files: []

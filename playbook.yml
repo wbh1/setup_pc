@@ -10,9 +10,6 @@
     - name: dotfiles
       tags: dotfiles
 
-    - name: cheat
-      tags: cheat
-
     - name: espanso
       tags: espanso
       when: ansible_os_family == "Darwin"

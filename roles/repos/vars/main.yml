@@ -1,8 +1,13 @@
 github_repos:
-  - url: https://github.com/arcticicestudio/nord-tmux.git
-    org: arcticicestudio
+  - org: arcticicestudio
     name: nord-tmux
 
-  - url: https://github.com/vivien/i3blocks-contrib.git
-    org: vivien
-    name: i3blocks-contrib
+  - org: wbh1
+    name: cheatsheets
+
+  - org: cheat
+    name: cheatsheets
+
+  # - url: https://github.com/vivien/i3blocks-contrib.git
+  #   org: vivien
+  #   name: i3blocks-contrib

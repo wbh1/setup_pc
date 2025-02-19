@@ -3,7 +3,6 @@
 dotfiles:
   dirs:
     - /etc/profile.d
-    - "{{ ansible_facts.env.HOME }}/.config/cheat"
     - "{{ ansible_facts.env.HOME }}/.config/sway"
     - "{{ ansible_facts.env.HOME }}/.config/waybar"
     - "{{ ansible_facts.env.HOME }}/.config/rofi/themes"
