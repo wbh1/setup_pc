@@ -2,5 +2,3 @@ pkgs:
   - gnu-sed
   - curl
   - bash
-  - obsidian
-  - todoist
