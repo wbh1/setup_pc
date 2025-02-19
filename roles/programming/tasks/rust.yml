@@ -1,5 +1,0 @@
----
-- name: install rust via rustup
-  ansible.builtin.shell:
-    cmd: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    creates: "{{ ansible_facts.env.HOME }}/.cargo/bin/rustup"

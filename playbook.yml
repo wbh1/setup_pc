@@ -1,8 +1,6 @@
 ---
 - hosts: localhost
   connection: local
-  vars:
-    GO_VERSION: 1.19.4
   roles:
     - name: zsh
       tags: zsh
