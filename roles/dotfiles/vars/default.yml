@@ -1,12 +1,3 @@
 ---
 # Defaults are presumed to be for Linux (Debian or RedHat based)
-dotfiles:
-  dirs:
-    - /etc/profile.d
-    - "{{ ansible_facts.env.HOME }}/.config/sway"
-    - "{{ ansible_facts.env.HOME }}/.config/waybar"
-    - "{{ ansible_facts.env.HOME }}/.config/rofi/themes"
-  files:
-    - { src: "sway", dest: "{{ ansible_facts.env.HOME }}/.config/sway/config" }
-    - { src: "waybar/config", dest: "{{ ansible_facts.env.HOME }}/.config/waybar/config" }
-    - { src: "waybar/style.css", dest: "{{ ansible_facts.env.HOME }}/.config/waybar/style.css" }
+dotfiles: {}

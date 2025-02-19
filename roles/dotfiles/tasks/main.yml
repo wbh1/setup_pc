@@ -10,32 +10,15 @@
       paths:
         - 'vars'
 
-- name: Verify creation of directories
-  file:
-    path: "{{ item }}"
-    state: directory
-    mode: 0755
-  become: true
-  loop: "{{ dotfiles.dirs }}"
+- name: ensure chezmoi is already installed by mise
+  stat:
+    path: "{{ ansible_facts.env.HOME }}/.local/share/mise/shims/chezmoi"
+  register: chezmoi_shim
 
-- name: Create symlinks for dotfiles
-  file:
-    src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    state: link
-    force: true
-  loop: "{{ dotfiles.files }}"
-
-- name: Create symlinks for new style rofi configs
-  file:
-    src: "{{ playbook_dir }}/roles/dotfiles/files/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    state: link
-    force: true
-  loop:
-    - { src: "rofi/themes/nord.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/themes/nord.rasi" }
-    - { src: "rofi/config-new.rasi", dest: "{{ ansible_facts.env.HOME }}/.config/rofi/config.rasi"}
-  when: >
-    not (ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('20.04', '>='))
-    and
-    ansible_os_family in ["RedHat", "Debian"]
+- name: Setup chezmoi for dotfiles
+  block:
+    - name: Initialize and apply chezmoi
+      shell: chezmoi init --apply wbh1
+      args:
+        creates: ~/.local/share/chezmoi/
+  when: chezmoi_shim.stat.exists
