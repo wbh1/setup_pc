@@ -26,3 +26,18 @@
   args:
     creates: ~/.oh-my-zsh
 
+- name: install ZSH plugins
+  git:
+    repo: https://github.com/{{ item.org }}/{{ item.name }}.git
+    dest: "{{ ansible_facts.env.HOME }}/.oh-my-zsh/custom/plugins/{{ item.name }}"
+    depth: 1
+  when: ansible_facts.env.ZSH is defined and ".oh-my-zsh" in ansible_facts.env.ZSH
+  loop:
+    - org: unixorn
+      name: fzf-zsh-plugin
+    - org: zsh-users
+      name: zsh-syntax-highlighting
+    - org: zsh-users
+      name: zsh-autosuggestions
+    - org: Aloxaf
+      name: fzf-tab
