@@ -1,9 +1,6 @@
 pkgs:
   - gnu-sed
   - curl
-  - direnv
   - bash
-  - syncthing
-  - switchaudio-osx
-  - deskpad
-  - neovim
+  - obsidian
+  - todoist
