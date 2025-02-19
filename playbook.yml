@@ -10,9 +10,6 @@
     - name: dotfiles
       tags: dotfiles
 
-    - name: programming
-      tags: programming
-
     - name: cheat
       tags: cheat
 
@@ -25,7 +22,7 @@
       tags: pkgs
 
     - name: repos
-      tags: repos
+      tags: repos,never
 
     - name: apps
       tags: apps
