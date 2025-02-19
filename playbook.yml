@@ -13,9 +13,6 @@
     - name: programming
       tags: programming
 
-    - name: k8s
-      tags: k8s
-
     - name: cheat
       tags: cheat
 
@@ -26,17 +23,17 @@
     # Install assorted packages
     - name: pkgs
       tags: pkgs
-    
+
     - name: repos
       tags: repos
-    
+
     - name: apps
       tags: apps
 
     - name: fonts
       tags: fonts
       when: ansible_system == "Linux" and 'WSL_DISTRO_NAME' not in ansible_env.keys()
-    
+
     - name: geerlingguy.docker
       become: true
       tags: docker
